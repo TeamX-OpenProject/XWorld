@@ -9,6 +9,13 @@ public class XWorld extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        System.out.println("Test");
+        System.out.println("WTF");
+        System.out.println("WTF");
+        System.out.println("WTF");
+        System.out.println("WTF");
+        System.out.println("WTF");
+
 
     }
 
