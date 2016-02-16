@@ -11,7 +11,6 @@ public class XWorld extends JavaPlugin {
     public void onEnable() {
         System.out.println("Test");
         System.out.println("WTF");
-        System.out.println("WTF");
 
     }
 
