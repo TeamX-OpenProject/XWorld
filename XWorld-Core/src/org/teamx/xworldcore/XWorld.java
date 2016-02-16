@@ -10,6 +10,7 @@ public class XWorld extends JavaPlugin {
     @Override
     public void onEnable() {
         System.out.println("Test");
+
     }
 
     @Override
