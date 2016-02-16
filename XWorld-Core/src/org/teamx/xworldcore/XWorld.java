@@ -9,7 +9,7 @@ public class XWorld extends JavaPlugin {
 
     @Override
     public void onEnable() {
-
+        s
     }
 
     @Override
