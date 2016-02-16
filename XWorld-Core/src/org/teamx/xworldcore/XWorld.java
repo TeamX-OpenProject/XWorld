@@ -13,6 +13,7 @@ public class XWorld extends JavaPlugin {
         System.out.println("WTF");
         System.out.println("WTF");
         System.out.println("WTF");
+        System.out.println("WTF");
 
 
     }
