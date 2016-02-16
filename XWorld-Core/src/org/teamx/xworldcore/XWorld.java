@@ -7,6 +7,8 @@ import org.bukkit.plugin.java.JavaPlugin;
  */
 public class XWorld extends JavaPlugin {
 
+    private static final String LOG_TAG = "[XWorld-Core] ";
+
     @Override
     public void onEnable() {
 
