@@ -6,7 +6,7 @@ import org.bukkit.World;
 import org.bukkit.WorldType;
 
 /**
- * @World-Properties
+ * World-Properties
  * @author Shustin
  */
 
@@ -73,10 +73,10 @@ public abstract interface IXWorld {
 
     /**
      *
-     * @return gamemode
+     * @return gameMode
      */
 
-    public abstract GameMode getGamemode();
+    public abstract GameMode getGameMode();
 
     /**
      *
@@ -85,4 +85,20 @@ public abstract interface IXWorld {
      */
 
     public abstract void setGameMode(GameMode gameMode);
+
+    /**
+     *
+     *@return
+     */
+
+    public abstract World.Environment getEnviroment();
+
+    /**
+     *
+     * @param enviroment
+     * @return
+     */
+
+    public abstract void setEnviroment(World.Environment enviroment);
+
 }
