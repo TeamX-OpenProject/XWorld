@@ -18,7 +18,7 @@ public class XWorldCore extends JavaPlugin {
     public void onEnable() {
         long startTime = System.currentTimeMillis();
 
-        //Here everything else...
+        //Here everything else..
 
         long stopTime = System.currentTimeMillis();
 
