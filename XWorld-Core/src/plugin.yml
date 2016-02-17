@@ -1,4 +1,4 @@
-name: XWorld-Core
+name: XWorldCore-Core
 version: 0.1
 authors: [Shustin, lusu007, TeamX]
-main: org.teamx.xworldcore.XWorld
+main: org.teamx.xworldcore.XWorldCore

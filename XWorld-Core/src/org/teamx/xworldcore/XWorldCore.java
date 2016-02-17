@@ -8,9 +8,9 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author Shustin
  *
  */
-public class XWorld extends JavaPlugin {
+public class XWorldCore extends JavaPlugin {
 
-    private static final String LOG_TAG = "[XWorld-Core] ";
+    private static final String LOG_TAG = "[XWorldCore-Core] ";
 
     @Override
     public void onEnable() {
