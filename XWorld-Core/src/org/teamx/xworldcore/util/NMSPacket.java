@@ -113,8 +113,7 @@ public class NMSPacket {
             Bukkit.getOnlinePlayers().forEach( player -> {
                 try {
                     if(!nmsPacket.isAssignableFrom(packet.getClass())) {
-                        throw new IllegalArgumentException("This Object is not a Packet!");
-                    }
+                        throw new IllegalArgumentException("This Object is not a Packet!");                    }
 
                     Object cp = craftPlayer.cast(player);
                     Object handle = craftPlayer.getMethod("getHandle").invoke(cp);
