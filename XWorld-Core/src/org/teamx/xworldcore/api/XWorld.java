@@ -69,4 +69,44 @@ public class XWorld implements IXWorld {
     public void setEnviroment(World.Environment enviroment) {
 
     }
+
+    @Override
+    public String getPermission() {
+        return null;
+    }
+
+    @Override
+    public void setPermission(String permission) {
+
+    }
+
+    @Override
+    public boolean animals() {
+        return false;
+    }
+
+    @Override
+    public void setAnimals(boolean toggleAnimals) {
+
+    }
+
+    @Override
+    public boolean monsters() {
+        return false;
+    }
+
+    @Override
+    public void setMonsters(boolean toggleMonsters) {
+
+    }
+
+    @Override
+    public boolean getWeatherChange() {
+        return false;
+    }
+
+    @Override
+    public void setWeatherChange(boolean toggleWeatherChange) {
+
+    }
 }

@@ -101,4 +101,66 @@ public abstract interface IXWorld {
 
     public abstract void setEnviroment(World.Environment enviroment);
 
+    /**
+     *
+     * @return
+     */
+
+    public abstract String getPermission();
+
+    /**
+     *
+     * @param permission
+     * @return
+     */
+
+    public abstract void setPermission(String permission);
+
+    /**
+     *
+     *
+     * @return
+     */
+
+    public abstract boolean animals();
+
+    /**
+     *
+     * @param toggleAnimals
+     * @return
+     */
+
+    public abstract void setAnimals(boolean toggleAnimals);
+
+    /**
+     *
+     *
+     * @return
+     */
+
+    public abstract boolean monsters();
+
+    /**
+     *
+     * @param toggleMonsters
+     * @return
+     */
+
+    public abstract void setMonsters(boolean toggleMonsters);
+
+    /**
+     *
+     * @return
+     */
+
+    public abstract boolean getWeatherChange();
+
+    /**
+     *
+     * @param toggleWeatherChange
+     * @return
+     */
+
+    public abstract void setWeatherChange(boolean toggleWeatherChange);
+
 }
