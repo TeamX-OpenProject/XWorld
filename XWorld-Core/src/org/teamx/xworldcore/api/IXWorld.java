@@ -85,4 +85,20 @@ public abstract interface IXWorld {
      */
 
     public abstract void setGameMode(GameMode gameMode);
+
+    /**
+     *
+     *@return
+     */
+
+    public abstract World.Environment getEnviroment();
+
+    /**
+     *
+     * @param enviroment
+     * @return
+     */
+
+    public abstract void setEnviroment(World.Environment enviroment);
+
 }
