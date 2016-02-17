@@ -21,6 +21,7 @@ public class XWorldCore extends JavaPlugin {
         //Here everything else...
 
         long stopTime = System.currentTimeMillis();
+
         this.getLogger().log( Level.INFO, "XWorld Plugin version "
                 + this.getDescription().getVersion() + "by "
                 + this.getDescription().getAuthors().toString().replaceAll( "(\\[|\\])", "" ) + " enabled! ( In "
