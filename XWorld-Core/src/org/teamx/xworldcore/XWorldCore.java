@@ -1,6 +1,9 @@
 package org.teamx.xworldcore;
 
+import org.bukkit.craftbukkit.libs.jline.internal.Log;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import java.util.logging.Level;
 
 /**
  *
@@ -14,9 +17,16 @@ public class XWorldCore extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        System.out.println(LOG_TAG);
+        long startTime = System.currentTimeMillis();
 
+        //Here everything else...
 
+        long stopTime = System.currentTimeMillis();
+        this.getLogger().log( Level.INFO, "XWorld Plugin version "
+                + this.getDescription().getVersion() + "by "
+                + this.getDescription().getAuthors().toString().replaceAll( "(\\[|\\])", "" ) + " enabled! ("
+                + " enabled. ("
+                + (stopTime - startTime) + "ms");
     }
 
     @Override
