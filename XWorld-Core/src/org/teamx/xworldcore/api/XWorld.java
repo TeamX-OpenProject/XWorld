@@ -51,12 +51,22 @@ public class XWorld implements IXWorld {
     }
 
     @Override
-    public GameMode getGamemode() {
+    public GameMode getGameMode() {
         return null;
     }
 
     @Override
     public void setGameMode( GameMode gameMode ) {
+
+    }
+
+    @Override
+    public World.Environment getEnviroment() {
+        return null;
+    }
+
+    @Override
+    public void setEnviroment(World.Environment enviroment) {
 
     }
 }
