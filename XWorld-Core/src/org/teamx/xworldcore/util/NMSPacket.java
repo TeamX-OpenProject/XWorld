@@ -6,7 +6,9 @@ import org.bukkit.entity.Player;
 import java.lang.reflect.Field;
 
 /**
- * Created by lusu007 on 17.02.2016.
+ *
+ * @author lusu007
+ *
  */
 public class NMSPacket {
 
@@ -16,6 +18,10 @@ public class NMSPacket {
     private Object packet;
     private Class<?> nmsPacket;
 
+    /**
+     * Creates a new NMSPacket
+     * @param packetName
+     */
     public NMSPacket(String packetName) {
         try {
             nmsPacket = Class.forName("net.minecraft.server." + version + "." + packet);
@@ -27,6 +33,11 @@ public class NMSPacket {
         }
     }
 
+    /**
+     * Sets the specified field
+     * @param fieldName
+     * @param value
+     */
     public void setField(String fieldName, Object value) {
         try {
             Field field = packet.getClass().getField(fieldName);
@@ -38,6 +49,11 @@ public class NMSPacket {
         }
     }
 
+    /**
+     * Sets the specified declared field
+     * @param fieldName
+     * @param value
+     */
     public void setDeclaredField(String fieldName, Object value) {
         try {
             Field field = packet.getClass().getDeclaredField(fieldName);
@@ -49,6 +65,11 @@ public class NMSPacket {
         }
     }
 
+    /**
+     * Returns the specified field
+     * @param fieldName
+     * @return
+     */
     public Object getField(String fieldName) {
         try {
             Field field = packet.getClass().getField(fieldName);
@@ -63,6 +84,11 @@ public class NMSPacket {
         return null;
     }
 
+    /**
+     * Returns the specified declared field
+     * @param fieldName
+     * @return
+     */
     public Object getDeclaredField(String fieldName) {
         try {
             Field field = packet.getClass().getDeclaredField(fieldName);
@@ -77,18 +103,34 @@ public class NMSPacket {
         return null;
     }
 
+    /**
+     * Returns the packet class
+     * @return
+     */
     public Class<?> getPacketClass() {
         return nmsPacket;
     }
 
+    /**
+     * Returns the packet as object
+     * @return
+     */
     public Object getPacket() {
         return packet;
     }
 
+    /**
+     * Checks if the packet is usable
+     * @return
+     */
     public boolean isUsable() {
         return packet != null;
     }
 
+    /**
+     * Send packet to a specified Player
+     * @param player
+     */
     public void sendPacket(Player player) {
         try {
             Class<?> craftPlayer = Class.forName("org.bukkit.craftbukkit." + version + ".entity.CraftPlayer" );
@@ -106,6 +148,9 @@ public class NMSPacket {
         }
     }
 
+    /**
+     * Send packet to all online Players
+     */
     public void sendPacketToAll() {
         try {
             Class<?> craftPlayer = Class.forName("org.bukkit.craftbukkit." + version + ".entity.CraftPlayer" );
