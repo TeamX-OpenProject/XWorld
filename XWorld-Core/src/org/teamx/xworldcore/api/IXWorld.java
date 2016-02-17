@@ -6,7 +6,7 @@ import org.bukkit.World;
 import org.bukkit.WorldType;
 
 /**
- * @World-Properties
+ * World-Properties
  * @author Shustin
  */
 
