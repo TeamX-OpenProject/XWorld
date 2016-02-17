@@ -9,6 +9,7 @@ import java.util.logging.Level;
  * @author lusu007
  * @author Shustin
  * @version 0.1
+ *
  */
 public class XWorldCore extends JavaPlugin {
 
