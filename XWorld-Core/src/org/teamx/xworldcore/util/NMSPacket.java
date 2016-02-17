@@ -10,8 +10,8 @@ import java.lang.reflect.Field;
  */
 public class NMSPacket {
 
-    private static String packageName = Bukkit.getServer().getClass().getPackage().getName();
-    private static String version = packageName.substring(packageName.lastIndexOf(".") + 1);
+    private String packageName = Bukkit.getServer().getClass().getPackage().getName();
+    private String version = packageName.substring(packageName.lastIndexOf(".") + 1);
 
     private Object packet;
     private Class<?> nmsPacket;
