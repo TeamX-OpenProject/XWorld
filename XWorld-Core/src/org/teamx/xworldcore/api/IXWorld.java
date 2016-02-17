@@ -73,10 +73,10 @@ public abstract interface IXWorld {
 
     /**
      *
-     * @return gamemode
+     * @return gameMode
      */
 
-    public abstract GameMode getGamemode();
+    public abstract GameMode getGameMode();
 
     /**
      *
