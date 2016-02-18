@@ -1,7 +1,6 @@
 package org.teamx.xworldcore.api;
 
 import org.bukkit.*;
-import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.permissions.Permission;
 
 /**
