@@ -128,7 +128,7 @@ public class NMSPacket {
     }
 
     /**
-     * Send packet to a specified Player
+     * Send packet to a specified IPlayer
      * @param player
      */
     public void sendPacket(Player player) {
