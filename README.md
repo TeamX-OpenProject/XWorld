@@ -1,7 +1,5 @@
 # XWorld
 
-XWorld ist ein MultiWelten System für Spigot
+XWorld is a Spigot and Craftbukkit Plugin which handles Multi Worlds.
 
-
-
-### Basiert auf Spigot 1.8.8
+Authors: Shustin and lusu007

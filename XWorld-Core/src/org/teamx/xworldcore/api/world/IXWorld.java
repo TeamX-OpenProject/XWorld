@@ -1,4 +1,4 @@
-package org.teamx.xworldcore.api;
+package org.teamx.xworldcore.api.world;
 
 import org.bukkit.*;
 import org.bukkit.permissions.Permission;
