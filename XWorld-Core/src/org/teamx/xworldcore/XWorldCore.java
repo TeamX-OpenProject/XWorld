@@ -1,6 +1,5 @@
 package org.teamx.xworldcore;
 
-import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.util.logging.Level;
@@ -14,7 +13,7 @@ import java.util.logging.Level;
  */
 public class XWorldCore extends JavaPlugin {
 
-    private static final String LOG_TAG = "[XWorldCore-Core] ";
+    public static final String LOG_TAG = "[XWorldCore-Core] ";
 
     @Override
     public void onEnable() {
