@@ -1,5 +1,5 @@
 # XWorld
 
-XWorld is a Spigot and Craftbukkit Plugin which handles Multi Worlds.
+XWorld is a Spigot/Bukkit/Craftbukkit Plugin which handles Multi Worlds. It will be the first MultiWorld Plugin for Spigot/Bukkit/Craftbukkit 1.9!
 
-Authors: Shustin and lusu007
+<b>We are looking for translator!</b>
