@@ -6,9 +6,9 @@ import java.util.Map;
 /**
  * @author Shustin
  */
-public class WorldPropeties {
+public class WorldProperties {
 
-    private static final Map<String, String> PROPERTIES; ;
+    private static final Map<String, String> PROPERTIES;
 
     static {
 
