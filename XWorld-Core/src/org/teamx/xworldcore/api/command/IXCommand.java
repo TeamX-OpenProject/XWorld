@@ -1,9 +1,5 @@
 package org.teamx.xworldcore.api.command;
 
-import org.bukkit.Location;
-import org.bukkit.command.CommandSender;
-import org.bukkit.permissions.Permission;
-
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

@@ -20,7 +20,7 @@ public class XWorldCore extends JavaPlugin {
     TestCommand testCommand;
     ConfirmCommand confirmCommand;
 
-    private static final String LOG_TAG = "[XWorldCore-Core] ";
+    public static final String LOG_TAG = "[XWorldCore-Core] ";
 
     @Override
     public void onEnable() {
