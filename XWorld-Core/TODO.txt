@@ -1,0 +1,46 @@
+Commands:
+	- Clone
+	- Create
+		- Seed angeben
+	- Confirm
+	- Delete
+	- Import
+	- Load
+	- ModifyProperties
+	- GetProperties
+	- Remove
+	- SetSpawn
+	- Teleport
+	- Test
+	- Unload
+	- XWorld
+	- Help
+	- Gamerule
+	- WorldInfo
+	- KillAll
+		- Pro Welt
+		- Argument mit MobArt
+	- List
+		- Auflistung aller Welten
+	
+Events:
+	- WorldChangeEvent
+	- InteractEvent
+	- SignChangeEvent
+	- RespawnEvent
+	- MoveEvent
+		- Portal
+	- JoinEvent
+		- Globaler Spawnpoint
+		- Lokaler Spawnpoint
+	
+Ideen:
+	- ActionBar Weltname anzeigen
+	- Beim WorldChange Title mit Name der Welt
+	- MCStats
+	- Chat pro Welt
+		- An/Aus
+		- Prefix usw. 
+		
+Generatoren:
+	- EmptyWorldGenerator
