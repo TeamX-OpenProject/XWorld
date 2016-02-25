@@ -6,7 +6,8 @@ import org.bukkit.World;
 import org.bukkit.WorldType;
 
 /**
- * Created by lusu007 on 17.02.2016.
+ * @lusu007
+ * @Shustin
  */
 public class XWorld {
 }
