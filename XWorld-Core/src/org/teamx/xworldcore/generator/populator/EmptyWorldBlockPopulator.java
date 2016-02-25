@@ -17,6 +17,12 @@ public class EmptyWorldBlockPopulator extends BlockPopulator {
         this.layerDataValues = layerDataValues;
     }
 
+    /**
+     *
+     * @param world
+     * @param random
+     * @param chunk
+     */
     public void populate(World world, Random random, Chunk chunk) {
         if (layerDataValues != null) {
             int x = chunk.getX() << 4;

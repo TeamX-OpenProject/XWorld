@@ -18,7 +18,7 @@ import static java.lang.System.arraycopy;
 
 /**
  * Created by lusu007 on 21.02.2016.
- * @author nvx CleanRoomGenerator
+ * @author nvx CleanRoomGenerator & Co-Autor: lusu007
  */
 public class EmptyWorldChunkGenerator extends ChunkGenerator {
     private Logger log = Logger.getLogger("Minecraft");
@@ -29,6 +29,10 @@ public class EmptyWorldChunkGenerator extends ChunkGenerator {
         this("64,stone");
     }
 
+    /**
+     *
+     * @param id
+     */
     public EmptyWorldChunkGenerator(String id) {
         if (id != null) {
             try {
@@ -131,7 +135,18 @@ public class EmptyWorldChunkGenerator extends ChunkGenerator {
             Arrays.fill(layer, 1, 65, (short)Material.STONE.getId());
         }
     }
+
+    /**
+     *
+     * @param world
+     * @param random
+     * @param x
+     * @param z
+     * @param biomes
+     * @return
+     */
     @Override
+    @Deprecated
     public short[][] generateExtBlockSections(World world, Random random, int x, int z, BiomeGrid biomes) {
         int maxHeight = world.getMaxHeight();
 
@@ -155,6 +170,11 @@ public class EmptyWorldChunkGenerator extends ChunkGenerator {
         return result;
     }
 
+    /**
+     *
+     * @param world
+     * @return
+     */
     @Override
     public List<BlockPopulator> getDefaultPopulators( World world) {
         if (layerDataValues != null) {
@@ -164,6 +184,12 @@ public class EmptyWorldChunkGenerator extends ChunkGenerator {
         }
     }
 
+    /**
+     *
+     * @param world
+     * @param random
+     * @return
+     */
     @Override
     public Location getFixedSpawnLocation( World world, Random random) {
         if (!world.isChunkLoaded(0, 0)) {
