@@ -20,7 +20,13 @@ public class TestCommand {
 
         Player player = xCommand.getPlayer();
 
-        printHoverable(player, ChatColor.GOLD + "If you want to confirm thath click below: \n", ChatColor.GREEN + "Confirm!", "/xworld " + "confirm", ChatColor.GOLD + "Click here to confirm!");
+        if(xCommand.getArguments().length == 1) {
+            printHoverable(player, ChatColor.GOLD + "If you want to confirm thath click below: \n", ChatColor.GREEN + "Confirm!", "/xworld " + "confirm", ChatColor.GOLD + "Click here to confirm!");
+        } else if (xCommand.getArguments().length == 2) {
+            player.sendMessage("2");
+        } else {
+            player.sendMessage("Too many arguments!");
+        }
     }
 
     public static void printHoverable(Player player, String ChatMsg, String ClickableMsg, String command, String HoverMsg) {
