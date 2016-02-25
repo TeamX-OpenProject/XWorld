@@ -4,35 +4,29 @@ import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.permissions.Permission;
 
+import java.lang.annotation.ElementType;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.lang.annotation.Target;
+
 /**
  * @author Shustin
  */
-public interface IXCommand {
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
 
-    CommandSender getSender();
+public abstract @interface IXCommand {
 
-    String getLabel();
+    public String permission() default "";
 
-    boolean hasPermission();
+    public String name() default "";
 
-    String[] getArguments();
+    public String[] aliases()  default {};
 
-    Location getLocation();
+    public String noPermission() default "§cYou do not have permission to perform that action";
 
-    public interface CommandBuilder {
+    public String description() default "";
 
-        void setSender(CommandSender commandSender);
-
-        void setLabel(String label);
-
-        void setPermission(Permission permission);
-
-        void setArguments(String[] arguments);
-
-        void setLocation(Location location);
-
-        public abstract IXCommand build();
-
-    }
+    public String usage() default "";
 
 }

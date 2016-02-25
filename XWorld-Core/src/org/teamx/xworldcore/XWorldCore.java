@@ -1,6 +1,7 @@
 package org.teamx.xworldcore;
 
 import org.bukkit.plugin.java.JavaPlugin;
+import org.teamx.xworldcore.command.*;
 
 import java.util.logging.Level;
 
@@ -13,11 +14,25 @@ import java.util.logging.Level;
  */
 public class XWorldCore extends JavaPlugin {
 
-    public static final String LOG_TAG = "[XWorldCore-Core] ";
+    CommandUtil commandUtil;
+    XWorldCommand xWorldCommand;
+    CloneCommand cloneCommand;
+    TestCommand testCommand;
+    ConfirmCommand confirmCommand;
+
+    private static final String LOG_TAG = "[XWorldCore-Core] ";
 
     @Override
     public void onEnable() {
+
         long startTime = System.currentTimeMillis();
+
+        initClasses();
+
+        commandUtil.registerCommands(xWorldCommand);
+        commandUtil.registerCommands(cloneCommand);
+        commandUtil.registerCommands(testCommand);
+        commandUtil.registerCommands(confirmCommand);
 
         //Here everything else..
 
@@ -33,4 +48,13 @@ public class XWorldCore extends JavaPlugin {
     public void onDisable() {
 
     }
+
+    private void initClasses() {
+        commandUtil = new CommandUtil(this);
+        xWorldCommand = new XWorldCommand();
+        cloneCommand = new CloneCommand();
+        testCommand = new TestCommand();
+        confirmCommand = new ConfirmCommand();
+    }
+
 }
