@@ -15,7 +15,7 @@ import org.teamx.xworldcore.api.command.IXCommand;
  */
 public class TestCommand {
 
-    @IXCommand(name = "xworld.test", permission = "xworld.test", usage = "/xworl test", aliases = {"xw.test", "teamx.test"}, description = "Testing some stuff!")
+    @IXCommand(name = "xworld.test", permission = "xworld.test", usage = "/xworld test", aliases = {"xw.test", "teamx.test"}, description = "Testing some stuff!")
     public void testCommand(XCommand xCommand) {
 
         Player player = xCommand.getPlayer();

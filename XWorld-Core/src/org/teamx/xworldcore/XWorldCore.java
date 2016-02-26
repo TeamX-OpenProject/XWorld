@@ -1,5 +1,6 @@
 package org.teamx.xworldcore;
 
+import org.bukkit.ChatColor;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.teamx.xworldcore.command.*;
 
@@ -20,12 +21,16 @@ public class XWorldCore extends JavaPlugin {
     TestCommand testCommand;
     ConfirmCommand confirmCommand;
 
+    private static XWorldCore instance;
+
     public static final String LOG_TAG = "[XWorldCore-Core] ";
+    public static final String PREFIX = ChatColor.DARK_AQUA + "[XWorld] ";
 
     @Override
     public void onEnable() {
-
         long startTime = System.currentTimeMillis();
+
+        instance = this;
 
         initClasses();
 
@@ -57,4 +62,7 @@ public class XWorldCore extends JavaPlugin {
         confirmCommand = new ConfirmCommand();
     }
 
+    public static XWorldCore getInstance() {
+        return instance;
+    }
 }
