@@ -6,7 +6,7 @@ import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.command.IXCommand;
 
 /**
- * @author Shustin
+ * @author lusu007
  */
 public class XWorldCommand {
 
