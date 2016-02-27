@@ -1,7 +1,6 @@
 Commands:
 	- Clone
 	- Create
-		- Seed angeben
 	- Confirm
 	- Delete
 	- Import

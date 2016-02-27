@@ -22,16 +22,14 @@ public class CreateCommand {
         this.plugin = plugin;
     }
 
-    @IXCommand()
+    @IXCommand(name = "xworld.create", permission = "xworld.command.create", usage = "/xworld create", aliases = {"xw.create", "teamx.create"}, description = "Creates a new world")
     public void createCommand(XCommand xCommand) {
-
-
 
         Player player = xCommand.getPlayer();
         String[] args = xCommand.getArguments();
 
         String name = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', args[0].toLowerCase()));
-        File world = new File(plugin.getDataFolder(), name + ".yml");
+        File world = new File(plugin.getDataFolder() + "/Worlds", name + ".yml");
         FileConfiguration cfg = YamlConfiguration.loadConfiguration(world);
         Location loc = player.getLocation();
 
