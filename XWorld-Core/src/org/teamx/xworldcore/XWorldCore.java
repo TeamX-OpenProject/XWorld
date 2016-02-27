@@ -1,9 +1,12 @@
 package org.teamx.xworldcore;
 
 import org.bukkit.ChatColor;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.teamx.xworldcore.command.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 /**
@@ -47,6 +50,8 @@ public class XWorldCore extends JavaPlugin {
                 + this.getDescription().getVersion() + " by "
                 + this.getDescription().getAuthors().toString().replaceAll( "(\\[|\\])", "" ) + " enabled! (In "
                 + (stopTime - startTime) + "ms)");
+
+        this.getLogger().log(Level.INFO, getGenerators() + " - World Generator(s) loaded");
     }
 
     @Override
@@ -58,8 +63,19 @@ public class XWorldCore extends JavaPlugin {
         commandUtil = new CommandUtil(this);
         xWorldCommand = new XWorldCommand();
         cloneCommand = new CloneCommand();
-        testCommand = new TestCommand();
+        testCommand = new TestCommand(this);
         confirmCommand = new ConfirmCommand();
+    }
+
+    private String getGenerators() {
+        Plugin[] plugins = this.getServer().getPluginManager().getPlugins();
+        List generators = new ArrayList();
+        for (Plugin p : plugins) {
+            if ((p.isEnabled()) && (p.getDefaultWorldGenerator("world", "") != null)) {
+                generators.add(p.getDescription().getName());
+            }
+        }
+        return String.valueOf(generators.size());
     }
 
     public static XWorldCore getInstance() {

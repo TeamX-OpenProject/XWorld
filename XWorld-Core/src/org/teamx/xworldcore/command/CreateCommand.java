@@ -16,6 +16,7 @@ import java.io.File;
 public class CreateCommand {
 
     private static XWorldCore plugin;
+    private static final String PREFIX = plugin.PREFIX;
 
     public CreateCommand(XWorldCore plugin) {
         this.plugin = plugin;
@@ -30,12 +31,12 @@ public class CreateCommand {
         String[] args = xCommand.getArguments();
 
         String name = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', args[0].toLowerCase()));
-        File world = new File("", name + ".yml");
+        File world = new File(plugin.getDataFolder(), name + ".yml");
         FileConfiguration cfg = YamlConfiguration.loadConfiguration(world);
         Location loc = player.getLocation();
 
         if (world.exists()) {
-            player.sendMessage(ChatColor.RED + "Diese Welt existiert bereits");
+            player.sendMessage(PREFIX + ChatColor.RED + "This world already exists");
         }
 
 

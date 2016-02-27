@@ -39,7 +39,7 @@ public class ConfigManager {
         try {
             this.configConfiguration.save(this.config);
         } catch (IOException e) {
-            System.out.println("Es ist ein unerwarteter Fehler aufgetreten!");
+            System.out.println("An unexpected error occurred while trying to save the config.");
             e.printStackTrace();
         }
     }
@@ -53,7 +53,7 @@ public class ConfigManager {
         fileConfiguration.set(path + ".World", loc.getWorld().getName());
     }
 
-    public Location loadWarpLocation(FileConfiguration fileConfiguration, String path) {
+    public Location loadSpawnLocation(FileConfiguration fileConfiguration, String path) {
         double X = fileConfiguration.getDouble(path + ".X");
         double Y = fileConfiguration.getDouble(path + ".Y");
         double Z = fileConfiguration.getDouble(path + ".Z");
