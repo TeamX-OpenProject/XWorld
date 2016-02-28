@@ -22,7 +22,7 @@ public class CreateCommand {
         this.plugin = plugin;
     }
 
-    @IXCommand(name = "xworld.create", permission = "xworld.command.create", usage = "/xworld create", aliases = {"xw.create", "teamx.create"}, description = "Creates a new world")
+    @IXCommand(name = "xworld.create", permission = "xworld.command.create", usage = "/xworld create [name]", aliases = {"xw.create", "teamx.create"}, description = "Creates a new world")
     public void createCommand(XCommand xCommand) {
 
         Player player = xCommand.getPlayer();
