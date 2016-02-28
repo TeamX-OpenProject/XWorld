@@ -41,6 +41,10 @@ public class XWorld implements IXWorld{
 
     //TODO: edit the return statement!
 
+    public XWorld() {
+
+    }
+
     @Override
     public World getXWorld() {
         return null;
