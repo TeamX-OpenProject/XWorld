@@ -1,6 +1,7 @@
 package org.teamx.xworldcore.api;
 
 import org.bukkit.*;
+import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.permissions.Permission;
 import org.teamx.xworldcore.api.world.IXWorld;
 
@@ -9,6 +10,37 @@ import org.teamx.xworldcore.api.world.IXWorld;
  * @Shustin
  */
 public class XWorld implements IXWorld{
+
+    private String worldName;
+    private WorldType worldType;
+    private World.Environment environment;
+    private ChunkGenerator chunkGenerator;
+    private long seed;
+    private Difficulty difficulty;
+    private GameMode gameMode;
+    private Permission accessPermission;
+    private Permission exemptPermission;
+    private ChatColor color;
+    private ChatColor style;
+    private String[] worldAliases;
+    private Location spawn;
+    private boolean animals;
+    private boolean weather;
+    private boolean mobs;
+    private boolean storm;
+    private boolean damage;
+    private boolean bedRespawn;
+    private boolean hunger;
+    private boolean signTeleport;
+    private boolean commandTeleport;
+    private boolean fly;
+    private boolean chat;
+    private boolean blockbreak;
+    private boolean pvp;
+    private boolean naturalGeneration;
+
+    //TODO: edit the return statement!
+
     @Override
     public World getXWorld() {
         return null;
@@ -105,7 +137,7 @@ public class XWorld implements IXWorld{
     }
 
     @Override
-    public String getWorldAlias() {
+    public String[] getWorldAliases() {
         return null;
     }
 

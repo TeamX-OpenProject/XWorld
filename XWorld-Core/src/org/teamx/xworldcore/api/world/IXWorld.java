@@ -191,7 +191,7 @@ public abstract interface IXWorld {
      * @return <b>the alias of this world name as String.
      */
 
-    String getWorldAlias();
+    String[] getWorldAliases();
 
     /**
      * Sets the alias of this world name.
