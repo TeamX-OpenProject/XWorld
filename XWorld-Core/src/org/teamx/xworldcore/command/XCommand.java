@@ -3,7 +3,6 @@ package org.teamx.xworldcore.command;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-import org.teamx.xworldcore.api.command.IXCommand;
 
 /**
  * @author Shustin
