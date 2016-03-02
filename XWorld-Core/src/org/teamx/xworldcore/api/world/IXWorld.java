@@ -2,6 +2,7 @@ package org.teamx.xworldcore.api.world;
 
 import org.bukkit.*;
 import org.bukkit.permissions.Permission;
+import org.teamx.xworldcore.api.XWorld;
 
 /**
  * World-Properties
@@ -17,7 +18,7 @@ public abstract interface IXWorld {
      * @return <b>A {@link World}
      */
 
-    World getXWorld();
+    XWorld getXWorld();
 
     /**
      * Gets the name of this world object.
