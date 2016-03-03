@@ -1,6 +1,8 @@
 package org.teamx.xworldcore.api;
 
 import org.bukkit.*;
+import org.bukkit.attribute.AttributeInstance;
+import org.bukkit.entity.Player;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.permissions.Permission;
 import org.teamx.xworldcore.XWorldCore;
@@ -42,6 +44,9 @@ public class XWorld implements IXWorld, IXWorldUtil {
     private boolean blockbreak;
     private boolean pvp;
     private boolean naturalGeneration;
+    private boolean old_combat;
+
+    AttributeInstance attributeInstance;
 
     //TODO: edit the return statement!
 
@@ -353,12 +358,24 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getPvP() {
-        return false;
+        return this.getXWorld().getPVP();
     }
 
     @Override
     public void setPvP(boolean togglePvP) {
 
+    }
+
+    @Override
+    public boolean getPvPType() {
+        return old_combat;
+    }
+
+    @Override
+    public void setPvPType(boolean togglePvPType) {
+        if(togglePvPType == true) {
+            attributeInstance.setBaseValue(16);
+        }
     }
 
     @Override

@@ -484,6 +484,26 @@ public abstract interface IXWorld {
     void setPvP(boolean togglePvP);
 
     /**
+     * Gets whether or not 1.9 combat is enabled in this world.
+     *
+     * by default it is true
+     *
+     * @return <b>true if enabled, false if not.
+     */
+
+    boolean getPvPType();
+
+    /**
+     * Sets whether or not 1.9 combat is enabled in this world.
+     *
+     * by default it is true
+     *
+     * @param togglePvPType <b>true for enable, false for disable.
+     */
+
+    void setPvPType(boolean togglePvPType);
+
+    /**
      * Gets whether or not WeatherChange is enabled in this world.
      *
      * by default it is true
