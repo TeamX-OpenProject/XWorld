@@ -8,6 +8,8 @@ import net.md_5.bungee.api.chat.HoverEvent;
 import net.minecraft.server.v1_9_R1.MinecraftServer;
 import net.minecraft.server.v1_9_R1.PlayerList;
 import org.bukkit.World;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.command.IXCommand;
@@ -34,6 +36,8 @@ public class TestCommand {
 
         if(xCommand.getArguments().length == 1) {
             sendClickableAndHoverable(player, ChatColor.GOLD + "If you want to confirm thath click below: \n", ChatColor.GREEN + "Confirm!", "/xworld " + "confirm", ChatColor.GOLD + "" + uuid);
+            AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
+            attributeInstance.setBaseValue(16D);
         } else if (xCommand.getArguments().length == 2) {
             player.sendMessage("2");
         } else {
