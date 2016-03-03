@@ -49,7 +49,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     AttributeInstance attributeInstance;
 
-    //TODO: edit the return statement!
+    //TODO: edit the return statements!
 
     private final ConfigManager configManager = XWorldCore.getInstance().getConfigManager();
 
