@@ -12,4 +12,8 @@ public abstract class XWorldEvent extends XEvent{
     public XWorldEvent(IXWorld world) {
         this.world = world;
     }
+
+    public IXWorld getWorld() {
+        return this.world;
+    }
 }

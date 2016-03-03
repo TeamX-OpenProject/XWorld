@@ -8,6 +8,7 @@ import org.bukkit.permissions.Permission;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.world.IXWorld;
 import org.teamx.xworldcore.api.world.IXWorldUtil;
+import org.teamx.xworldcore.configuration.ConfigManager;
 
 import java.util.logging.Level;
 
@@ -50,7 +51,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     //TODO: edit the return statement!
 
-    //XWorldCore.getInstance.getConfigManager
+    private final ConfigManager configManager = XWorldCore.getInstance().getConfigManager();
 
     public XWorld() {
     }
