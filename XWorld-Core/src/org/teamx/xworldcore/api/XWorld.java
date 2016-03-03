@@ -6,7 +6,6 @@ import org.bukkit.permissions.Permission;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.world.IXWorld;
 import org.teamx.xworldcore.api.world.IXWorldUtil;
-import org.teamx.xworldcore.configuration.ConfigManager;
 
 import java.util.logging.Level;
 
@@ -46,14 +45,12 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     //TODO: edit the return statement!
 
-    ConfigManager configManager = new ConfigManager( XWorldCore.getInstance() );
+    //XWorldCore.getInstance.getConfigManager
 
     public XWorld() {
-
     }
 
 
-    // ----- BEREICH LUKAS -----
 
 
     @Override
@@ -62,23 +59,28 @@ public class XWorld implements IXWorld, IXWorldUtil {
     }
 
     @Override
-    public void deleteXWorld() {
+    public void deleteXWorld(XWorld xWorld) {
 
     }
 
     @Override
-    public void loadXWorld() {
+    public void loadXWorld(World world) {
         Bukkit.getServer().getWorlds().add( Bukkit.getWorld( getWorldName() ) );
         XWorldCore.getInstance().getLogger().log( Level.INFO, XWorldCore.LOG_TAG + "Loaded world " + getWorldName() + "sucessfully!");
     }
 
     @Override
-    public void unloadXWorld() {
+    public void unloadXWorld(XWorld xWorld) {
 
     }
 
     @Override
-    public XWorld getXWorld() { //TODO: HOTFIX return type
+    public World getXWorld() {
+        return null;
+    }
+
+    @Override
+    public XWorld getXWorld(XWorld xworld) { //TODO: HOTFIX return type
         return new XWorld();
     }
 
@@ -87,12 +89,17 @@ public class XWorld implements IXWorld, IXWorldUtil {
         return new XWorld[ 0 ];
     }
 
+
     @Override
-    public World getWorld() {
-        return null;
+    public boolean isLoaded() {
+        return false;
     }
 
-    // ----- BEREICH JUSTIN -----
+    @Override
+    public String getName() {
+        return getXWorld().getName();
+    }
+
 
     @Override
     public String getWorldName() {

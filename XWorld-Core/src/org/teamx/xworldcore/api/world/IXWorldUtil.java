@@ -10,18 +10,19 @@ public interface IXWorldUtil {
 
     void buildXWorld();
 
-    void deleteXWorld();
+    void deleteXWorld(XWorld xWorld);
 
-    void loadXWorld();
+    void loadXWorld(World world);
 
-    void unloadXWorld();
+    void unloadXWorld(XWorld xWorld);
 
-    XWorld getXWorld();
+    XWorld getXWorld(XWorld xWorld);
 
     XWorld[] getXWorlds();
 
-    World getWorld();
+    boolean isLoaded();
 
+    String getName();
 
 
 }

@@ -4,6 +4,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.teamx.xworldcore.command.*;
+import org.teamx.xworldcore.configuration.ConfigManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,6 +24,7 @@ public class XWorldCore extends JavaPlugin {
     CloneCommand cloneCommand;
     TestCommand testCommand;
     ConfirmCommand confirmCommand;
+    ConfigManager configManager;
 
     private static XWorldCore instance;
 
@@ -65,6 +67,8 @@ public class XWorldCore extends JavaPlugin {
         cloneCommand = new CloneCommand();
         testCommand = new TestCommand(this);
         confirmCommand = new ConfirmCommand();
+
+        configManager = new ConfigManager(this);
     }
 
     private String getGenerators() {
@@ -76,6 +80,10 @@ public class XWorldCore extends JavaPlugin {
             }
         }
         return String.valueOf(generators.size());
+    }
+
+    public ConfigManager getConfigManager() {
+        return configManager;
     }
 
     public static XWorldCore getInstance() {

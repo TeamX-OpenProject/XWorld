@@ -18,13 +18,13 @@ public abstract interface IXWorld {
      * @return <b>A {@link World}
      */
 
-    XWorld getXWorld();
+    World getXWorld();
 
     /**
      * Gets the name of this world object.
      * No way to change the name.
      * <p>
-     * It is possible that you are looking for the alias {@link #getWorldAlias()}
+     * It is possible that you are looking for the alias
      *
      * @return <b>the name of this world as a string.
      */
