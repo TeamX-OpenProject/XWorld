@@ -12,13 +12,14 @@ public class PlayerMessager {
     StringBuilder builder = new StringBuilder();
 
     /**
-     *
+     * Creates a new Instance
      */
     public PlayerMessager() {
+
     }
 
     /**
-     *
+     * Builds the message and send it to a specified player
      * @param player
      * @return
      */
@@ -28,7 +29,7 @@ public class PlayerMessager {
     }
 
     /**
-     *
+     * Add a title to your message
      * @return
      */
     public PlayerMessager addTitle() {
@@ -37,7 +38,7 @@ public class PlayerMessager {
     }
 
     /**
-     *
+     * Add a footer to your message
      * @return
      */
     public PlayerMessager addFooter() {
@@ -46,7 +47,7 @@ public class PlayerMessager {
     }
 
     /**
-     *
+     * Add a line with the current/maximum page
      * @param current
      * @param max
      * @return
@@ -61,7 +62,7 @@ public class PlayerMessager {
     }
 
     /**
-     *
+     * Add a line with the command for the next page
      * @param nextPage
      * @return
      */
@@ -71,7 +72,7 @@ public class PlayerMessager {
     }
 
     /**
-     *
+     * Add an empty line
      * @return
      */
     public PlayerMessager addEmptyLine() {
@@ -80,7 +81,7 @@ public class PlayerMessager {
     }
 
     /**
-     *
+     * Add infos to your message
      * @param infos
      * @return
      */
@@ -91,5 +92,13 @@ public class PlayerMessager {
         return this;
     }
 
-
+    /**
+     * Add one info to your message
+     * @param info
+     * @return
+     */
+    public PlayerMessager addInformation(String info) {
+        builder.append( XWorldCore.PREFIX + info + "\n");
+        return this;
+    }
 }
