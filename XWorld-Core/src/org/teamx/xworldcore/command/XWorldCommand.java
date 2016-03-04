@@ -18,15 +18,16 @@ public class XWorldCommand {
         String[] args = xCommand.getArguments();
 
         if(args.length == 0) {
-            playerMessager.addTitle().
-                    addCurrentPageLine( 1, 5 ).
-                    addEmptyLine().
-                    addInformations( "You running version: " + XWorldCore.getInstance().getDescription().getVersion(),
+            playerMessager.addTitle()
+                    .addCurrentPageLine(-1, 5)
+                    .addEmptyLine()
+                    .addInformations( "You running version: " + XWorldCore.getInstance().getDescription().getVersion(),
                             "You currently loaded XX world's",
                             "Yout currently have XX unloaded world's" )
-                    .addEmptyLine().addNextPageLine( 2 )
+                    .addEmptyLine()
+                    .addNextPageLine(2)
                     .addFooter()
-                    .sendMessage( player );
+                    .sendMessage(player);
         }
     }
 }
