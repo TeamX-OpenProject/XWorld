@@ -53,10 +53,8 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     private final ConfigManager configManager = XWorldCore.getInstance().getConfigManager();
 
-    public XWorld() {
-    }
-
-
+    //public XWorld(String worldName, World.Environment environment, long seed, ChunkGenerator chunkGenerator, WorldType worldType, Difficulty difficulty, GameMode gameMode, ) {
+   // }
 
 
     @Override
