@@ -7,16 +7,20 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.command.IXCommand;
+import org.teamx.xworldcore.api.log.PlayerMessager;
 
 import java.io.File;
 
 /**
+ * @author lusu007
  * @author Shustin
  */
 public class CreateCommand {
 
     private static XWorldCore plugin;
     private static final String PREFIX = plugin.PREFIX;
+
+    PlayerMessager playerMessager = new PlayerMessager();
 
     public CreateCommand(XWorldCore plugin) {
         this.plugin = plugin;
@@ -34,7 +38,7 @@ public class CreateCommand {
         Location loc = player.getLocation();
 
         if (world.exists()) {
-            player.sendMessage(PREFIX + ChatColor.RED + "This world already exists");
+            playerMessager.addInformation(ChatColor.RED + "This world already exists").sendMessage(player);
         }
 
 

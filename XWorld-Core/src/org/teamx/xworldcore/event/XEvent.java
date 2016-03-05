@@ -11,5 +11,4 @@ public abstract class XEvent extends Event {
     public void event() {
         Bukkit.getPluginManager().callEvent(this);
     }
-
 }

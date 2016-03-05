@@ -15,6 +15,7 @@ import java.lang.reflect.Method;
 import java.util.AbstractMap;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * @author Shustin
@@ -81,7 +82,7 @@ public class CommandUtil implements CommandExecutor {
             if (m.getAnnotation(IXCommand.class) != null) {
                 IXCommand command = m.getAnnotation(IXCommand.class);
                 if (m.getParameterTypes().length > 1 || m.getParameterTypes()[0] != XCommand.class) {
-                    System.out.println("Register all Commands is failure.");
+                    XWorldCore.getxLogger().log( Level.WARNING, "In register commands is a failure!", true);
                     continue;
                 }
                 registerCommand(command, command.name(), m, object);

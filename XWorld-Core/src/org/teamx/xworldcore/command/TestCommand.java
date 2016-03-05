@@ -1,29 +1,20 @@
 package org.teamx.xworldcore.command;
 
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import net.md_5.bungee.api.chat.HoverEvent;
 import net.minecraft.server.v1_9_R1.MinecraftServer;
 import net.minecraft.server.v1_9_R1.PlayerList;
-import org.bukkit.Bukkit;
-import org.bukkit.Location;
-import org.bukkit.World;
-import org.bukkit.WorldCreator;
+import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.entity.Player;
-import org.bukkit.generator.ChunkGenerator;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.command.IXCommand;
+import org.teamx.xworldcore.api.log.PlayerMessager;
 
 import java.io.File;
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-import java.lang.reflect.Method;
 import java.util.UUID;
 
 /**
@@ -32,6 +23,8 @@ import java.util.UUID;
 public class TestCommand {
 
     private XWorldCore plugin;
+
+    static PlayerMessager playerMessager = new PlayerMessager();
 
     public TestCommand(XWorldCore plugin) {
         this.plugin = plugin;

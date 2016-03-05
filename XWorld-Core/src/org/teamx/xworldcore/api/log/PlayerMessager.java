@@ -4,6 +4,8 @@ import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.teamx.xworldcore.XWorldCore;
 
+import java.util.logging.Level;
+
 /**
  * @author lusu007
  */
@@ -24,7 +26,12 @@ public class PlayerMessager {
      * @return
      */
     public PlayerMessager sendMessage(Player player) {
-        player.sendMessage( builder.toString() );
+        if( player != null ) {
+            XWorldCore.getxLogger().logMessageToPlayer( Level.INFO, builder.toString(), player );
+            player.sendMessage( builder.toString() );
+        } else {
+            XWorldCore.getxLogger().log(Level.WARNING, "Can't execute command as console", true);
+        }
         return this;
     }
 
@@ -99,6 +106,15 @@ public class PlayerMessager {
      */
     public PlayerMessager addInformation(String info) {
         builder.append( XWorldCore.PREFIX + info + "\n");
+        return this;
+    }
+
+    /**
+     * Reset the hole message builder
+     * @return
+     */
+    public PlayerMessager clear() {
+        builder.delete( 0, builder.length() );
         return this;
     }
 }

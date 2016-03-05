@@ -4,12 +4,11 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.craftbukkit.libs.org.ibex.nestedvm.util.Seekable;
-import org.bukkit.plugin.Plugin;
 import org.teamx.xworldcore.XWorldCore;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
 
 /**
  * @author Shustin
@@ -41,7 +40,7 @@ public class ConfigManager {
         try {
             this.configConfiguration.save(this.config);
         } catch (IOException e) {
-            System.out.println("An unexpected error occurred while trying to save the config.");
+            XWorldCore.getxLogger().log( Level.WARNING, "An unexpected error occurred while trying to save the config.", true);
             e.printStackTrace();
         }
     }

@@ -17,7 +17,7 @@ public class XWorldCommand {
         Player player = xCommand.getPlayer();
         String[] args = xCommand.getArguments();
 
-        /*if(args.length == 0) {
+        if(args.length == 0) {
             playerMessager.addTitle()
                     .addCurrentPageLine(-1, 5)
                     .addEmptyLine()
@@ -28,6 +28,6 @@ public class XWorldCommand {
                     .addNextPageLine(2)
                     .addFooter()
                     .sendMessage(player);
-        }*/
+        }
     }
 }

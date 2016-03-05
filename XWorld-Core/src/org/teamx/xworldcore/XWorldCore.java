@@ -3,6 +3,7 @@ package org.teamx.xworldcore;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.teamx.xworldcore.api.log.XLogger;
 import org.teamx.xworldcore.command.*;
 import org.teamx.xworldcore.configuration.ConfigManager;
 
@@ -14,7 +15,7 @@ import java.util.logging.Level;
  *
  * @author lusu007
  * @author Shustin
- * @version 0.1
+ * @version 0.2
  *
  */
 public class XWorldCore extends JavaPlugin {
@@ -25,6 +26,8 @@ public class XWorldCore extends JavaPlugin {
     TestCommand testCommand;
     ConfirmCommand confirmCommand;
     ConfigManager configManager;
+
+    static XLogger xLogger;
 
     private static XWorldCore instance;
 
@@ -44,16 +47,17 @@ public class XWorldCore extends JavaPlugin {
         commandUtil.registerCommands(testCommand);
         commandUtil.registerCommands(confirmCommand);
 
+        xLogger = new XLogger();
         //Here everything else..
 
         long stopTime = System.currentTimeMillis();
 
-        this.getLogger().log( Level.INFO, "XWorld Plugin version "
+        xLogger.log( Level.INFO, "XWorld Plugin version "
                 + this.getDescription().getVersion() + " by "
                 + this.getDescription().getAuthors().toString().replaceAll( "(\\[|\\])", "" ) + " enabled! (In "
-                + (stopTime - startTime) + "ms)");
+                + (stopTime - startTime) + "ms)", true);
 
-        this.getLogger().log(Level.INFO, getGenerators() + " - World Generator(s) loaded");
+        xLogger.log(Level.INFO, getGenerators() + " - World Generator(s) loaded", true);
     }
 
     @Override
@@ -88,5 +92,9 @@ public class XWorldCore extends JavaPlugin {
 
     public static XWorldCore getInstance() {
         return instance;
+    }
+
+    public static XLogger getxLogger() {
+        return xLogger;
     }
 }

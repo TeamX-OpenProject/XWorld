@@ -45,9 +45,8 @@ public class XCommand {
     public Player getPlayer() {
         if (commandSender instanceof Player) {
             return (Player) commandSender;
-        } else {
-            return null;
         }
+        return null;
     }
 
     public boolean isPlayer() {
