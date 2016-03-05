@@ -62,7 +62,9 @@ public class XWorldCore extends JavaPlugin {
 
     @Override
     public void onDisable() {
-
+        xLogger.log(Level.INFO, "Unloading world(s)...", true );
+        xLogger.log(Level.INFO, "Saving config's..,", true );
+        xLogger.log(Level.INFO, "Shutting down server...", false );
     }
 
     private void initClasses() {
