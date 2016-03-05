@@ -47,8 +47,8 @@ public class XWorldCore extends JavaPlugin {
         commandUtil.registerCommands(testCommand);
         commandUtil.registerCommands(confirmCommand);
 
-        xLogger = new XLogger();
         //Here everything else..
+        xLogger = new XLogger();
 
         long stopTime = System.currentTimeMillis();
 

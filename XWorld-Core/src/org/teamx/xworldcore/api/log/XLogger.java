@@ -62,8 +62,8 @@ public class XLogger {
         }
 
         try {
-            fileWriter.append(System.getProperty("line.separator"));
             fileWriter.write(stringBuilder.toString());
+            fileWriter.append(System.getProperty("line.separator"));
         } catch ( IOException e ) {
             e.printStackTrace();
         } finally {
@@ -84,7 +84,7 @@ public class XLogger {
      * @param player
      */
     public void logMessageToPlayer(Level info, String message, Player player) {
-        XWorldCore.getxLogger().log(Level.INFO, "--- Beginning OF MESSAGE --- ", false);
+        XWorldCore.getxLogger().log(Level.INFO, "--- BEGINNING OF MESSAGE --- ", false);
         XWorldCore.getxLogger().log(Level.INFO, "Send following message to " + player.getName() + ":", false);
         for( String s : message.split("\n") ) {
             XWorldCore.getxLogger().log( Level.INFO, ChatColor.stripColor(s), false);
