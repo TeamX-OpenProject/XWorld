@@ -9,6 +9,7 @@ import net.minecraft.server.v1_9_R1.PlayerList;
 import org.bukkit.*;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeInstance;
+import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.command.IXCommand;
@@ -42,6 +43,7 @@ public class TestCommand {
             sendClickableAndHoverable(player, ChatColor.GOLD + "If you want to confirm thath click below: \n", ChatColor.GREEN + "Confirm!", "/xworld " + "confirm", ChatColor.GOLD + "" + uuid);
             AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
             attributeInstance.setBaseValue(16D);
+            ((CraftPlayer)player).getHandle().setCustomName("Dummkopf");
         } else if (xCommand.getArguments().length == 3) {
             String worldName = (String) args[1];
             String generator = (String) args[2];
@@ -57,6 +59,7 @@ public class TestCommand {
             //worldCreator.generator(generator);
 
             plugin.getConfigManager().newWorldConfig(new File(worldName));
+
 
            // worldCreator.createWorld();
 

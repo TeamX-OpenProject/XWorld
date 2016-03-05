@@ -1,6 +1,8 @@
 package org.teamx.xworldcore.api.log;
 
 import org.bukkit.ChatColor;
+import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.teamx.xworldcore.XWorldCore;
 
@@ -22,14 +24,14 @@ public class PlayerMessager {
 
     /**
      * Builds the message and send it to a specified player
-     * @param player
+     * @param commandSender
      * @return
      */
-    public PlayerMessager sendMessage(Player player) {
-        if( player != null ) {
-            XWorldCore.getxLogger().logMessageToPlayer( Level.INFO, builder.toString(), player );
-            player.sendMessage( builder.toString() );
-        } else {
+    public PlayerMessager sendMessage(CommandSender commandSender) {
+        if( commandSender instanceof Player) {
+            XWorldCore.getxLogger().logMessageToPlayer( Level.INFO, builder.toString(), (Player) commandSender );
+            commandSender.sendMessage( builder.toString() );
+        } else if ( commandSender instanceof ConsoleCommandSender) {
             XWorldCore.getxLogger().log(Level.WARNING, "Can't execute command as console", true);
         }
         return this;
