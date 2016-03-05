@@ -75,6 +75,10 @@ public class XWorldCore extends JavaPlugin {
         configManager = new ConfigManager(this);
     }
 
+    /**
+     * Get all available generator(s)
+     * @return
+     */
     private String getGenerators() {
         Plugin[] plugins = this.getServer().getPluginManager().getPlugins();
         List generators = new ArrayList();
@@ -86,14 +90,26 @@ public class XWorldCore extends JavaPlugin {
         return String.valueOf(generators.size());
     }
 
+    /**
+     * Return's the ConfigManager instance
+     * @return
+     */
     public ConfigManager getConfigManager() {
         return configManager;
     }
 
+    /**
+     * Return's the XWorldCore instance
+     * @return
+     */
     public static XWorldCore getInstance() {
         return instance;
     }
 
+    /**
+     * Return's the XLogger instance
+     * @return
+     */
     public static XLogger getxLogger() {
         return xLogger;
     }
