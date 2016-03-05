@@ -3,14 +3,14 @@ package org.teamx.xworldcore.command;
 import org.bukkit.entity.Player;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.command.IXCommand;
-import org.teamx.xworldcore.api.log.PlayerMessager;
+import org.teamx.xworldcore.api.log.PlayerMessenger;
 
 /**
  * @author lusu007
  */
 public class XWorldCommand {
 
-    PlayerMessager playerMessager = new PlayerMessager();
+    PlayerMessenger playerMessenger = new PlayerMessenger();
 
     @IXCommand(name = "xworld", permission = "xworld.command.xworld", usage = "/xworld", aliases = {"xw", "teamx"}, description = "This is the XWorld base command")
     public void xWorldCommand(XCommand xCommand) {
@@ -18,7 +18,7 @@ public class XWorldCommand {
         String[] args = xCommand.getArguments();
 
         if(args.length == 0) {
-            playerMessager.addTitle()
+            playerMessenger.addTitle()
                     .addCurrentPageLine(-1, 5)
                     .addEmptyLine()
                     .addInformations( "You running version: " + XWorldCore.getInstance().getDescription().getVersion(),

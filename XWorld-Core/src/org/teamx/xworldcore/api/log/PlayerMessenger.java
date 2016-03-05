@@ -11,14 +11,14 @@ import java.util.logging.Level;
 /**
  * @author lusu007
  */
-public class PlayerMessager {
+public class PlayerMessenger {
 
     StringBuilder builder = new StringBuilder();
 
     /**
      * Creates a new Instance
      */
-    public PlayerMessager() {
+    public PlayerMessenger() {
 
     }
 
@@ -27,7 +27,7 @@ public class PlayerMessager {
      * @param commandSender
      * @return
      */
-    public PlayerMessager sendMessage(CommandSender commandSender) {
+    public PlayerMessenger sendMessage( CommandSender commandSender) {
         if( commandSender instanceof Player) {
             XWorldCore.getxLogger().logMessageToPlayer( Level.INFO, builder.toString(), (Player) commandSender );
             commandSender.sendMessage( builder.toString() );
@@ -41,7 +41,7 @@ public class PlayerMessager {
      * Add a title to your message
      * @return
      */
-    public PlayerMessager addTitle() {
+    public PlayerMessenger addTitle() {
         builder.append( XWorldCore.PREFIX + ChatColor.GOLD + "============" + ChatColor.GRAY + "[" + ChatColor.YELLOW + "XWorld-Information" + ChatColor.GRAY + "]" + ChatColor.GOLD + "============\n" );
         return this;
     }
@@ -50,7 +50,7 @@ public class PlayerMessager {
      * Add a footer to your message
      * @return
      */
-    public PlayerMessager addFooter() {
+    public PlayerMessenger addFooter() {
         builder.append( XWorldCore.PREFIX + ChatColor.GOLD + "=========================================\n");
         return this;
     }
@@ -61,7 +61,7 @@ public class PlayerMessager {
      * @param max
      * @return
      */
-    public PlayerMessager addCurrentPageLine(int current, int max) {
+    public PlayerMessenger addCurrentPageLine( int current, int max) {
         if ( current <= max && current > 0) {
             builder.append( XWorldCore.PREFIX + ChatColor.BOLD + "Page [" + current + "/" + max + "]\n");
         } else {
@@ -75,7 +75,7 @@ public class PlayerMessager {
      * @param nextPage
      * @return
      */
-    public PlayerMessager addNextPageLine(int nextPage) {
+    public PlayerMessenger addNextPageLine( int nextPage) {
         builder.append( XWorldCore.PREFIX + ChatColor.BOLD + "Goto next page with /xworld [" + nextPage + "]\n");
         return this;
     }
@@ -84,7 +84,7 @@ public class PlayerMessager {
      * Add an empty line
      * @return
      */
-    public PlayerMessager addEmptyLine() {
+    public PlayerMessenger addEmptyLine() {
         builder.append( XWorldCore.PREFIX + " \n" );
         return this;
     }
@@ -94,7 +94,7 @@ public class PlayerMessager {
      * @param infos
      * @return
      */
-    public PlayerMessager addInformations(String... infos) {
+    public PlayerMessenger addInformations( String... infos) {
         for ( String info : infos ) {
             builder.append( XWorldCore.PREFIX + ChatColor.YELLOW + info + "\n");
         }
@@ -106,7 +106,7 @@ public class PlayerMessager {
      * @param info
      * @return
      */
-    public PlayerMessager addInformation(String info) {
+    public PlayerMessenger addInformation( String info) {
         builder.append( XWorldCore.PREFIX + info + "\n");
         return this;
     }
@@ -115,7 +115,7 @@ public class PlayerMessager {
      * Reset the hole message builder
      * @return
      */
-    public PlayerMessager clear() {
+    public PlayerMessenger clear() {
         builder.delete( 0, builder.length() );
         return this;
     }

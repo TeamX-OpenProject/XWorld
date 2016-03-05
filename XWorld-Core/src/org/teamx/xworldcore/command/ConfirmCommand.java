@@ -1,7 +1,7 @@
 package org.teamx.xworldcore.command;
 
 import org.teamx.xworldcore.api.command.IXCommand;
-import org.teamx.xworldcore.api.log.PlayerMessager;
+import org.teamx.xworldcore.api.log.PlayerMessenger;
 
 /**
  * @author lusu007
@@ -9,11 +9,11 @@ import org.teamx.xworldcore.api.log.PlayerMessager;
  */
 public class ConfirmCommand {
 
-    PlayerMessager playerMessager = new PlayerMessager();
+    PlayerMessenger playerMessenger = new PlayerMessenger();
 
     @IXCommand(name = "xworld.confirm", description = "Confirm actions!", aliases = {"xw.confirm", "teamx.confirm"}, usage = "You can't run this command without request", permission = "")
     public boolean confirmCommand(XCommand xCommand) {
-        playerMessager.addInformation( "Confirm successfully!" ).sendMessage(xCommand.getPlayer());
+        playerMessenger.addInformation( "Confirm successfully!" ).sendMessage(xCommand.getPlayer());
         return true;
     }
 

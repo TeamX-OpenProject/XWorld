@@ -13,7 +13,7 @@ import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.command.IXCommand;
-import org.teamx.xworldcore.api.log.PlayerMessager;
+import org.teamx.xworldcore.api.log.PlayerMessenger;
 
 import java.io.File;
 import java.util.UUID;
@@ -25,7 +25,7 @@ public class TestCommand {
 
     private XWorldCore plugin;
 
-    static PlayerMessager playerMessager = new PlayerMessager();
+    static PlayerMessenger playerMessenger = new PlayerMessenger();
 
     public TestCommand(XWorldCore plugin) {
         this.plugin = plugin;
