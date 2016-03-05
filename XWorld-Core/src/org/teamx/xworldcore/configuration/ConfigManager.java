@@ -4,6 +4,7 @@ import org.bukkit.Location;
 import org.bukkit.World;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.craftbukkit.libs.org.ibex.nestedvm.util.Seekable;
 import org.bukkit.plugin.Plugin;
 import org.teamx.xworldcore.XWorldCore;
 
@@ -17,6 +18,7 @@ public class ConfigManager {
 
     public File config;
     public FileConfiguration configConfiguration;
+    public FileConfiguration worldConfiguration;
     public static XWorldCore plugin;
 
     public ConfigManager(XWorldCore xWorldCore) {
@@ -43,6 +45,30 @@ public class ConfigManager {
             e.printStackTrace();
         }
     }
+
+    public void newWorldConfig(File worldName) {
+
+        this.worldConfiguration = YamlConfiguration.loadConfiguration(worldName);
+
+        try {
+            setupWorldConfig(worldName);
+            this.worldConfiguration.save(new File(this.plugin.getDataFolder(), worldName + ".yml"));
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setupWorldConfig(File worldFile) {
+
+        this.worldConfiguration = YamlConfiguration.loadConfiguration(worldFile);
+
+        worldConfiguration.set("settings.spawnAnimals", true);
+        worldConfiguration.set("settings.spawnMonsters", true);
+        worldConfiguration.set("settings.PvP", true);
+
+    }
+
 
     public void setSpawn(FileConfiguration fileConfiguration, Location loc, String path) {
         fileConfiguration.set(path + ".X", Double.valueOf(loc.getX()));

@@ -2,14 +2,19 @@ package org.teamx.xworldcore.api;
 
 import org.bukkit.*;
 import org.bukkit.attribute.AttributeInstance;
+import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.permissions.Permission;
+import org.bukkit.plugin.Plugin;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.world.IXWorld;
 import org.teamx.xworldcore.api.world.IXWorldUtil;
 import org.teamx.xworldcore.configuration.ConfigManager;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.logging.Level;
 
 /**
@@ -49,9 +54,11 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     AttributeInstance attributeInstance;
 
+    FileConfiguration worldConfiguration;
+
     //TODO: edit the return statements!
 
-    private final ConfigManager configManager = XWorldCore.getInstance().getConfigManager();
+    private XWorldCore plugin = XWorldCore.getInstance();
 
     //public XWorld(String worldName, World.Environment environment, long seed, ChunkGenerator chunkGenerator, WorldType worldType, Difficulty difficulty, GameMode gameMode, ) {
    // }
@@ -75,6 +82,29 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public void unloadXWorld(XWorld xWorld) {
+
+    }
+
+    public void newWorldConfig(File worldName) {
+
+        this.worldConfiguration = YamlConfiguration.loadConfiguration(worldName);
+
+        try {
+            setupWorldConfig(worldName);
+            this.worldConfiguration.save(new File(this.plugin.getDataFolder(), worldName + ".yml"));
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void setupWorldConfig(File worldFile) {
+
+        this.worldConfiguration = YamlConfiguration.loadConfiguration(worldFile);
+
+        worldConfiguration.set("settings.spawnAnimals", true);
+        worldConfiguration.set("settings.spawnMonsters", true);
+        worldConfiguration.set("settings.PvP", true);
 
     }
 

@@ -38,7 +38,7 @@ public class TestCommand {
     }
 
     @IXCommand(name = "xworld.test", permission = "xworld.test", usage = "/xworld test", aliases = {"xw.test", "teamx.test"}, description = "Testing some stuff!")
-    public void testCommand(XCommand xCommand) {
+    public boolean testCommand(XCommand xCommand) {
 
         Player player = xCommand.getPlayer();
         World world = player.getWorld();
@@ -56,18 +56,23 @@ public class TestCommand {
 
             if (worldFile.exists()) {
                 player.sendMessage("schon da");
-            }
-
-            WorldCreator worldCreator = new WorldCreator(worldName);
-
-            worldCreator.generator(generator);
-
-            worldCreator.createWorld();
-
-            Location location = Bukkit.getWorld(worldName).getSpawnLocation();
-
-            player.teleport(location);
+                return false;
         }
+
+            //WorldCreator worldCreator = new WorldCreator(worldName);
+
+            //worldCreator.generator(generator);
+
+            plugin.getConfigManager().newWorldConfig(new File(worldName));
+
+           // worldCreator.createWorld();
+
+            //Location location = Bukkit.getWorld(worldName).getSpawnLocation();
+
+            //player.teleport(location);
+        }
+
+        return true;
     }
 
     public static void sendClickableAndHoverable(Player player, String ChatMsg, String ClickableMsg, String command, String HoverMsg) {

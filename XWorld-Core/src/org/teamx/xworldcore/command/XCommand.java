@@ -2,6 +2,7 @@ package org.teamx.xworldcore.command;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 
 /**
@@ -42,7 +43,7 @@ public class XCommand {
     }
 
     public Player getPlayer() {
-        if(commandSender instanceof Player) {
+        if (commandSender instanceof Player) {
             return (Player) commandSender;
         } else {
             return null;
