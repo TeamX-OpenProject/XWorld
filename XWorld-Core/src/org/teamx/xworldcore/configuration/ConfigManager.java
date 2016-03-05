@@ -28,8 +28,7 @@ public class ConfigManager {
     }
 
 
-    public void loadConfigurations()
-    {
+    public void loadConfigurations() {
         if (!this.config.exists()) {
             this.configConfiguration.options().copyDefaults(true);
             saveConfig();
@@ -40,13 +39,12 @@ public class ConfigManager {
         try {
             this.configConfiguration.save(this.config);
         } catch (IOException e) {
-            XWorldCore.getxLogger().log( Level.WARNING, "An unexpected error occurred while trying to save the config.", true);
+            XWorldCore.getxLogger().log(Level.CONFIG, "An unexpected error occurred while trying to save the config.", true);
             e.printStackTrace();
         }
     }
 
     public void newWorldConfig(File worldName) {
-
         this.worldConfiguration = YamlConfiguration.loadConfiguration(worldName);
 
         try {
@@ -59,7 +57,6 @@ public class ConfigManager {
     }
 
     public void setupWorldConfig(File worldFile) {
-
         this.worldConfiguration = YamlConfiguration.loadConfiguration(worldFile);
 
         worldConfiguration.set("settings.spawnAnimals", true);
