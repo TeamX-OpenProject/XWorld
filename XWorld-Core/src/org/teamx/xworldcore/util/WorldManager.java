@@ -1,10 +1,8 @@
 package org.teamx.xworldcore.util;
 
-import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import org.bukkit.*;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.generator.ChunkGenerator;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.XWorld;
 import org.teamx.xworldcore.api.world.IXWorldUtil;
@@ -58,7 +56,6 @@ public class WorldManager implements IXWorldUtil {
         File file = new File(name);
 
         setupWorldConfig(file, seedLong, structure, worldType, environment, location);
-
     }
 
 

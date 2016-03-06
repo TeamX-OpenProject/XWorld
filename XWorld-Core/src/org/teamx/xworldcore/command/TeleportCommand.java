@@ -15,7 +15,6 @@ public class TeleportCommand {
         Player player = xCommand.getPlayer();
         String[] args = xCommand.getArguments();
 
-
         return true;
     }
 }

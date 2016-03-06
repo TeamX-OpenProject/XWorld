@@ -3,7 +3,6 @@ package org.teamx.xworldcore;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.teamx.xworldcore.api.XWorld;
 import org.teamx.xworldcore.api.log.XLogger;
 import org.teamx.xworldcore.command.*;
 import org.teamx.xworldcore.configuration.ConfigManager;
@@ -121,6 +120,10 @@ public class XWorldCore extends JavaPlugin {
         return xLogger;
     }
 
+    /**
+     * Return's WorldManager
+     * @return
+     */
     public WorldManager getWorldManager() {
         return worldManager;
     }
