@@ -135,7 +135,6 @@ public class WorldManager implements IXWorldUtil {
         worldConfiguration.set("world.settings.storm", true);
         worldConfiguration.set("world.settings.damage", true);
         worldConfiguration.set("world.settings.chat", true);
-        worldConfiguration.set("world.settings.PvP", true);
 
         try {
             this.worldConfiguration.save(new File(XWorldCore.getInstance().getDataFolder(), worldFile + ".yml"));
