@@ -33,7 +33,7 @@ public class CreateCommand {
         String[] args = xCommand.getArguments();
 
         String name = ChatColor.stripColor(ChatColor.translateAlternateColorCodes('&', args[0].toLowerCase()));
-        File world = new File(plugin.getDataFolder() + "/Worlds", name + ".yml");
+        File world = new File(plugin.getDataFolder() + "/worlds", name + ".yml");
         FileConfiguration cfg = YamlConfiguration.loadConfiguration(world);
         Location loc = player.getLocation();
 
