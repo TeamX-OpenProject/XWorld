@@ -3,9 +3,11 @@ package org.teamx.xworldcore;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.teamx.xworldcore.api.XWorld;
 import org.teamx.xworldcore.api.log.XLogger;
 import org.teamx.xworldcore.command.*;
 import org.teamx.xworldcore.configuration.ConfigManager;
+import org.teamx.xworldcore.util.WorldManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +28,8 @@ public class XWorldCore extends JavaPlugin {
     TestCommand testCommand;
     ConfirmCommand confirmCommand;
     ConfigManager configManager;
+    WorldManager worldManager;
+
 
     static XLogger xLogger;
 
@@ -73,6 +77,7 @@ public class XWorldCore extends JavaPlugin {
         cloneCommand = new CloneCommand();
         testCommand = new TestCommand(this);
         confirmCommand = new ConfirmCommand();
+        worldManager = new WorldManager();
 
         configManager = new ConfigManager(this);
     }
@@ -114,5 +119,9 @@ public class XWorldCore extends JavaPlugin {
      */
     public static XLogger getxLogger() {
         return xLogger;
+    }
+
+    public WorldManager getWorldManager() {
+        return worldManager;
     }
 }

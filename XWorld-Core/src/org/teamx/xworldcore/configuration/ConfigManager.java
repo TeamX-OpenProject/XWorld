@@ -2,6 +2,7 @@ package org.teamx.xworldcore.configuration;
 
 import org.bukkit.Location;
 import org.bukkit.World;
+import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.teamx.xworldcore.XWorldCore;
@@ -44,38 +45,30 @@ public class ConfigManager {
         }
     }
 
-    public void newWorldConfig(File worldName) {
-        this.worldConfiguration = YamlConfiguration.loadConfiguration(worldName);
-
-        try {
-            setupWorldConfig(worldName);
-            this.worldConfiguration.save(new File(this.plugin.getDataFolder(), worldName + ".yml"));
-        }
-        catch (IOException e) {
-            e.printStackTrace();
+    public boolean exists(File file) {
+        if(!file.exists()) {
+            return true;
+        } else {
+            return false;
         }
     }
 
-    public void setupWorldConfig(File worldFile) {
-        this.worldConfiguration = YamlConfiguration.loadConfiguration(worldFile);
+    public void setString(File file, String path, String s) {
 
-        worldConfiguration.set("settings.spawnAnimals", true);
-        worldConfiguration.set("settings.spawnMonsters", true);
-        worldConfiguration.set("settings.PvP", true);
-
+        worldConfiguration.set(path, s);
     }
 
+    public void setLong(File file, String path, long l) {
 
-    public void setSpawn(FileConfiguration fileConfiguration, Location loc, String path) {
-        fileConfiguration.set(path + ".X", Double.valueOf(loc.getX()));
-        fileConfiguration.set(path + ".Y", Double.valueOf(loc.getY()));
-        fileConfiguration.set(path + ".Z", Double.valueOf(loc.getZ()));
-        fileConfiguration.set(path + ".Yaw", Float.valueOf(loc.getYaw()));
-        fileConfiguration.set(path + ".Pitch", Float.valueOf(loc.getPitch()));
-        fileConfiguration.set(path + ".World", loc.getWorld().getName());
+        worldConfiguration.set(path, l);
     }
 
-    public Location loadSpawnLocation(FileConfiguration fileConfiguration, String path) {
+    public void setBoolean(File file, String path, boolean b) {
+
+        worldConfiguration.set(path, b);
+    }
+
+    public Location getSpawn(FileConfiguration fileConfiguration, String path) {
         double X = fileConfiguration.getDouble(path + ".X");
         double Y = fileConfiguration.getDouble(path + ".Y");
         double Z = fileConfiguration.getDouble(path + ".Z");
@@ -89,5 +82,19 @@ public class ConfigManager {
         return loc;
     }
 
+    public String getString(File file, String path) {
+
+        return worldConfiguration.getString(path);
+    }
+
+    public Long getLong(File file, String path) {
+
+        return worldConfiguration.getLong(path);
+    }
+
+    public Boolean getBoolean(File file, String path) {
+
+        return worldConfiguration.getBoolean(path);
+    }
 
 }

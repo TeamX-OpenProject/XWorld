@@ -53,6 +53,7 @@ public class XCommand {
         return commandSender instanceof Player;
     }
 
+
     public Command getCommand() {
         return command;
     }

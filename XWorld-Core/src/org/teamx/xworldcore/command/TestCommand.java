@@ -12,6 +12,7 @@ import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.craftbukkit.v1_9_R1.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 import org.teamx.xworldcore.XWorldCore;
+import org.teamx.xworldcore.api.XWorld;
 import org.teamx.xworldcore.api.command.IXCommand;
 import org.teamx.xworldcore.api.log.PlayerMessenger;
 
@@ -44,28 +45,16 @@ public class TestCommand {
             AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
             attributeInstance.setBaseValue(16D);
             ((CraftPlayer)player).getHandle().setCustomName("Dummkopf");
-        } else if (xCommand.getArguments().length == 3) {
+        } else if (xCommand.getArguments().length == 6) {
             String worldName = (String) args[1];
-            String generator = (String) args[2];
-            File worldFile = new File(this.plugin.getServer().getWorldContainer(), worldName);
+            String seed = (String) args[2];
+            String generator = (String) args[3];
+            String worldTypeString = args[5].toUpperCase();
+            WorldType worldType = WorldType.getByName(worldTypeString);
+            World.Environment env = World.Environment.valueOf(args[5]);
 
-            if (worldFile.exists()) {
-                player.sendMessage("schon da");
-                return false;
-        }
+            plugin.getWorldManager().buildXWorld(worldName,seed, generator, worldType, true, env);
 
-            //WorldCreator worldCreator = new WorldCreator(worldName);
-
-            //worldCreator.generator(generator);
-
-            plugin.getConfigManager().newWorldConfig(new File(worldName));
-
-
-           // worldCreator.createWorld();
-
-            //Location location = Bukkit.getWorld(worldName).getSpawnLocation();
-
-            //player.teleport(location);
         }
 
         return true;

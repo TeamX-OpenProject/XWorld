@@ -1,6 +1,10 @@
 package org.teamx.xworldcore.api.world;
 
+import org.bukkit.Difficulty;
 import org.bukkit.World;
+import org.bukkit.WorldCreator;
+import org.bukkit.WorldType;
+import org.bukkit.generator.ChunkGenerator;
 import org.teamx.xworldcore.api.XWorld;
 
 /**
@@ -8,7 +12,7 @@ import org.teamx.xworldcore.api.XWorld;
  */
 public interface IXWorldUtil {
 
-    void buildXWorld();
+    void buildXWorld(String name, String seed, String chunkGenerator, WorldType worldType, Boolean structure, World.Environment environment);
 
     void deleteXWorld(XWorld xWorld);
 

@@ -21,12 +21,12 @@ import java.util.logging.Level;
  * @lusu007
  * @Shustin
  */
-public class XWorld implements IXWorld, IXWorldUtil {
+public class XWorld implements IXWorld {
 
     private String worldName;
     private WorldType worldType;
     private World.Environment environment;
-    private ChunkGenerator chunkGenerator;
+    private String chunkGenerator;
     private long seed;
     private Difficulty difficulty;
     private GameMode gameMode;
@@ -37,6 +37,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
     private String[] worldAliases;
     private Location spawn;
     private boolean animals;
+    private boolean monsters;
     private boolean weather;
     private boolean mobs;
     private boolean storm;
@@ -60,52 +61,22 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     private XWorldCore plugin = XWorldCore.getInstance();
 
-    //public XWorld(String worldName, World.Environment environment, long seed, ChunkGenerator chunkGenerator, WorldType worldType, Difficulty difficulty, GameMode gameMode, ) {
-   // }
 
-
-    @Override
-    public void buildXWorld() {
-
+    public XWorld(String name, long seed, World.Environment env, String generator, WorldType worldType) {
+        this.worldName = name;
+        this.seed = seed;
+        this.environment = env;
+        this.chunkGenerator = generator;
+        this.worldType = worldType;
+        this.gameMode = GameMode.SURVIVAL;
     }
 
-    @Override
-    public void deleteXWorld(XWorld xWorld) {
-
-    }
-
-    @Override
-    public void loadXWorld(World world) {
-        Bukkit.getServer().getWorlds().add( Bukkit.getWorld( getWorldName() ) );
-        XWorldCore.getInstance().getLogger().log( Level.INFO, XWorldCore.LOG_TAG + "Loaded world " + getWorldName() + "sucessfully!");
-    }
-
-    @Override
-    public void unloadXWorld(XWorld xWorld) {
-
-    }
-
-    public void newWorldConfig(File worldName) {
-
-        this.worldConfiguration = YamlConfiguration.loadConfiguration(worldName);
-
-        try {
-            setupWorldConfig(worldName);
-            this.worldConfiguration.save(new File(this.plugin.getDataFolder(), worldName + ".yml"));
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public void setupWorldConfig(File worldFile) {
-
-        this.worldConfiguration = YamlConfiguration.loadConfiguration(worldFile);
-
-        worldConfiguration.set("settings.spawnAnimals", true);
-        worldConfiguration.set("settings.spawnMonsters", true);
-        worldConfiguration.set("settings.PvP", true);
-
+    public XWorld(String name, World.Environment env, String generator, WorldType worldType) {
+        this.worldName = name;
+        this.environment = env;
+        this.chunkGenerator = generator;
+        this.worldType = worldType;
+        this.gameMode = GameMode.SURVIVAL;
     }
 
     @Override
@@ -114,40 +85,18 @@ public class XWorld implements IXWorld, IXWorldUtil {
     }
 
     @Override
-    public XWorld getXWorld(XWorld xworld) { //TODO: HOTFIX return type
-        return new XWorld();
-    }
-
-    @Override
-    public XWorld[] getXWorlds() {
-        return new XWorld[ 0 ];
-    }
-
-
-    @Override
-    public boolean isLoaded() {
-        return false;
-    }
-
-    @Override
-    public String getName() {
-        return getXWorld().getName();
-    }
-
-
-    @Override
     public String getWorldName() {
-        return null;
+        return this.worldName;
     }
 
     @Override
     public WorldType getWorldType() {
-        return null;
+        return this.worldType;
     }
 
     @Override
     public World.Environment getEnvironment() {
-        return null;
+        return this.environment;
     }
 
     @Override
@@ -157,7 +106,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public String getGenerator() {
-        return null;
+        return this.chunkGenerator;
     }
 
     @Override
@@ -167,7 +116,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public long getSeed() {
-        return 0;
+        return this.seed;
     }
 
     @Override
@@ -177,7 +126,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public Difficulty getDifficulty() {
-        return null;
+        return this.difficulty;
     }
 
     @Override
@@ -187,7 +136,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public GameMode getGameMode() {
-        return null;
+        return this.gameMode;
     }
 
     @Override
@@ -197,17 +146,17 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public Permission getAccesPermission() {
-        return null;
+        return this.accessPermission;
     }
 
     @Override
     public Permission getExemptPermission() {
-        return null;
+        return this.exemptPermission;
     }
 
     @Override
     public ChatColor getColor() {
-        return null;
+        return this.color;
     }
 
     @Override
@@ -217,7 +166,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public ChatColor getStyle() {
-        return null;
+        return this.style;
     }
 
     @Override
@@ -227,7 +176,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public String[] getWorldAliases() {
-        return null;
+        return this.worldAliases;
     }
 
     @Override
@@ -237,7 +186,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public Location getSpawn() {
-        return null;
+        return this.spawn;
     }
 
     @Override
@@ -247,7 +196,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getHunger() {
-        return false;
+        return this.hunger;
     }
 
     @Override
@@ -257,7 +206,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getSignTeleport() {
-        return false;
+        return this.signTeleport;
     }
 
     @Override
@@ -267,7 +216,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getCommandTeleport() {
-        return false;
+        return this.commandTeleport;
     }
 
     @Override
@@ -287,7 +236,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getAllowFlight() {
-        return false;
+        return this.fly;
     }
 
     @Override
@@ -297,7 +246,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getChatAllowed() {
-        return false;
+        return this.chat;
     }
 
     @Override
@@ -317,7 +266,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getAllowBedRespawn() {
-        return false;
+        return this.bedRespawn;
     }
 
     @Override
@@ -327,7 +276,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getNaturalGeneration() {
-        return false;
+        return this.naturalGeneration;
     }
 
     @Override
@@ -337,7 +286,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getAllowDamage() {
-        return false;
+        return this.damage;
     }
 
     @Override
@@ -347,7 +296,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getDisableBlockBreak() {
-        return false;
+        return this.blockbreak;
     }
 
     @Override
@@ -367,7 +316,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getSpawnAnimals() {
-        return false;
+        return this.animals;
     }
 
     @Override
@@ -377,7 +326,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getSpawnMonsters() {
-        return false;
+        return this.monsters;
     }
 
     @Override
@@ -387,7 +336,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getPvP() {
-        return this.getXWorld().getPVP();
+        return this.pvp;
     }
 
     @Override
@@ -397,7 +346,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getPvPType() {
-        return old_combat;
+        return this.old_combat;
     }
 
     @Override
@@ -409,7 +358,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getWeatherChange() {
-        return false;
+        return this.weather;
     }
 
     @Override
@@ -419,7 +368,7 @@ public class XWorld implements IXWorld, IXWorldUtil {
 
     @Override
     public boolean getStorm() {
-        return false;
+        return this.storm;
     }
 
     @Override
