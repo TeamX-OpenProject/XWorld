@@ -5,11 +5,13 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.XWorld;
+import org.teamx.xworldcore.api.log.PlayerMessenger;
 import org.teamx.xworldcore.api.world.IXWorldUtil;
 import org.teamx.xworldcore.configuration.ConfigManager;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.logging.Level;
 
 /**
  * @author Shustin
@@ -22,9 +24,7 @@ public class WorldManager implements IXWorldUtil {
 
     @Override
     public void buildXWorld(String name, String seed, String chunkGenerator, WorldType worldType, Boolean structure, World.Environment environment) {
-
         Long seedLong = null;
-
         WorldCreator worldCreator = new WorldCreator(name);
 
         if((seed != null) && (seed.length() > 0)) {
@@ -34,27 +34,39 @@ public class WorldManager implements IXWorldUtil {
                 seedLong = Long.valueOf(seed.hashCode());
             }
             worldCreator.seed(seedLong.longValue());
+        } else {
+            XWorldCore.getxLogger().log(Level.INFO, "Seed for world " + name + " cannot be null!", true);
         }
 
         if((chunkGenerator != null) && (chunkGenerator.length() != 0)) {
             worldCreator.generator(chunkGenerator);
+        } else {
+            XWorldCore.getxLogger().log(Level.INFO, "Generator for world " + name + " cannot be null!", true);
         }
 
         if(worldType != null) {
             worldCreator.type(worldType);
+        } else {
+            XWorldCore.getxLogger().log(Level.INFO, "WorldType for world " + name + " cannot be null!", true);
         }
-
 
         if(structure != null) {
             worldCreator.generateStructures(structure.booleanValue());
+        } else {
+            XWorldCore.getxLogger().log(Level.INFO, "Structure Boolean for world " + name + " cannot be null!", true);
         }
 
+        XWorldCore.getxLogger().log(Level.INFO, "Starting world creation for world " + name + "...", true);
+
+        long startTime = System.currentTimeMillis();
         worldCreator.createWorld();
+        long stopTime = System.currentTimeMillis();
+
+        XWorldCore.getxLogger().log(Level.INFO, "World " + name + " created in " + (stopTime - startTime) + "ms!", true);
 
         Location location = Bukkit.getWorld(name).getSpawnLocation();
 
         File file = new File(name);
-
         setupWorldConfig(file, seedLong, structure, worldType, environment, location);
     }
 
@@ -96,6 +108,7 @@ public class WorldManager implements IXWorldUtil {
 
 
     public void setupWorldConfig(File worldFile, long seed, boolean structure, WorldType worldType, World.Environment environment, Location location) {
+        XWorldCore.getxLogger().log(Level.INFO, "Setting up world config for world " + getName() + "...", true);
         this.worldConfiguration = YamlConfiguration.loadConfiguration(worldFile);
 
         worldConfiguration.set("world.name", String.valueOf(worldFile));
@@ -134,7 +147,9 @@ public class WorldManager implements IXWorldUtil {
         worldConfiguration.set("world.settings.chat", true);
 
         try {
+            XWorldCore.getxLogger().log(Level.INFO, "Saving world config for world " + getName() + "...", true);
             this.worldConfiguration.save(new File(XWorldCore.getInstance().getDataFolder(), worldFile + ".yml"));
+            XWorldCore.getxLogger().log(Level.INFO, "Config for world " + getName() + " saved!", true);
         }
         catch (IOException e) {
             e.printStackTrace();
