@@ -3,7 +3,6 @@ package org.teamx.xworldcore;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.teamx.xworldcore.api.XWorld;
 import org.teamx.xworldcore.api.log.XLogger;
 import org.teamx.xworldcore.command.*;
 import org.teamx.xworldcore.configuration.ConfigManager;
@@ -29,7 +28,6 @@ public class XWorldCore extends JavaPlugin {
     ConfirmCommand confirmCommand;
     ConfigManager configManager;
     WorldManager worldManager;
-
 
     static XLogger xLogger;
 
@@ -62,6 +60,7 @@ public class XWorldCore extends JavaPlugin {
                 + (stopTime - startTime) + "ms)", true);
 
         xLogger.log(Level.INFO, getGenerators() + " - World Generator(s) loaded", true);
+        xLogger.log(Level.INFO, "Running on version: " + getServer().getVersion().toString(), false);
     }
 
     @Override
@@ -121,6 +120,10 @@ public class XWorldCore extends JavaPlugin {
         return xLogger;
     }
 
+    /**
+     * Return's WorldManager
+     * @return
+     */
     public WorldManager getWorldManager() {
         return worldManager;
     }

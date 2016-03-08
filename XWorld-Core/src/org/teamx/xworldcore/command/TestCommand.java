@@ -44,7 +44,6 @@ public class TestCommand {
             sendClickableAndHoverable(player, ChatColor.GOLD + "If you want to confirm thath click below: \n", ChatColor.GREEN + "Confirm!", "/xworld " + "confirm", ChatColor.GOLD + "" + uuid);
             AttributeInstance attributeInstance = player.getAttribute(Attribute.GENERIC_ATTACK_SPEED);
             attributeInstance.setBaseValue(16D);
-            ((CraftPlayer)player).getHandle().setCustomName("Dummkopf");
         } else if (xCommand.getArguments().length == 6) {
             String worldName = (String) args[1];
             String seed = (String) args[2];
