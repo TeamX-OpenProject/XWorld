@@ -29,7 +29,6 @@ public class XWorldCore extends JavaPlugin {
     ConfigManager configManager;
     WorldManager worldManager;
 
-
     static XLogger xLogger;
 
     private static XWorldCore instance;
@@ -61,6 +60,7 @@ public class XWorldCore extends JavaPlugin {
                 + (stopTime - startTime) + "ms)", true);
 
         xLogger.log(Level.INFO, getGenerators() + " - World Generator(s) loaded", true);
+        xLogger.log(Level.INFO, "Running on version: " + getServer().getVersion().toString(), false);
     }
 
     @Override
