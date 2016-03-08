@@ -45,4 +45,4 @@ Generatoren:
 	- EmptyWorldGenerator
 
 Classtrip:
-    - Lukas have to do this shit alone ;o
+    - Lukas have to do this shit alone ;p
