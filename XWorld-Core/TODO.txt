@@ -43,3 +43,6 @@ Ideen:
 		
 Generatoren:
 	- EmptyWorldGenerator
+
+Classtrip:
+    - Lukas have to do this shit alone ;o
