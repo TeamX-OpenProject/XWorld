@@ -28,7 +28,6 @@ public class CreateCommand {
 
     @IXCommand(name = "xworld.create", permission = "xworld.command.create", usage = "/xworld create [name]", aliases = {"xw.create", "teamx.create"}, description = "Creates a new world")
     public void createCommand(XCommand xCommand) {
-
         Player player = xCommand.getPlayer();
         String[] args = xCommand.getArguments();
 
@@ -40,7 +39,5 @@ public class CreateCommand {
         if (world.exists()) {
             playerMessenger.addInformation(ChatColor.RED + "This world already exists").sendMessage(player);
         }
-
-
     }
 }

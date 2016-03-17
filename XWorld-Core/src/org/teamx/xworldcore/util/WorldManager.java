@@ -116,6 +116,7 @@ public class WorldManager implements IXWorldUtil {
         worldConfiguration.set("world.seed", seed);
         worldConfiguration.set("world.worldType", worldType);
         worldConfiguration.set("world.environment", World.Environment.valueOf(String.valueOf(environment)));
+        System.out.println(World.Environment.valueOf(String.valueOf(environment)));
 
         worldConfiguration.set("world.spawn" + ".x", location.getX());
         worldConfiguration.set("world.spawn" + ".y", location.getY());
@@ -148,7 +149,7 @@ public class WorldManager implements IXWorldUtil {
 
         try {
             XWorldCore.getxLogger().log(Level.INFO, "Saving world config for world " + getName() + "...", true);
-            this.worldConfiguration.save(new File(XWorldCore.getInstance().getDataFolder(), worldFile + ".yml"));
+            this.worldConfiguration.save(new File(XWorldCore.getInstance().getDataFolder(), "worlds/" + worldFile + ".yml"));
             XWorldCore.getxLogger().log(Level.INFO, "Config for world " + getName() + " saved!", true);
         }
         catch (IOException e) {

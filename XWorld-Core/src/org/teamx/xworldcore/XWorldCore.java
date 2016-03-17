@@ -44,23 +44,29 @@ public class XWorldCore extends JavaPlugin {
 
         initClasses();
 
+        if(isSpigot()) {
+            xLogger.log(Level.INFO, "-- STARTUP ON SPIGOT --", false);
+        } else {
+            xLogger.log(Level.INFO, "-- STARTUP (Please use spigot!)--", false);
+        }
+
         commandUtil.registerCommands(xWorldCommand);
         commandUtil.registerCommands(cloneCommand);
         commandUtil.registerCommands(testCommand);
         commandUtil.registerCommands(confirmCommand);
 
         //Here everything else..
-        xLogger = new XLogger();
+
 
         long stopTime = System.currentTimeMillis();
 
         xLogger.log( Level.INFO, "XWorld Plugin version "
-                + this.getDescription().getVersion() + " by "
+                + "v" + this.getDescription().getVersion() + " by "
                 + this.getDescription().getAuthors().toString().replaceAll( "(\\[|\\])", "" ) + " enabled! (In "
                 + (stopTime - startTime) + "ms)", true);
 
         xLogger.log(Level.INFO, getGenerators() + " - World Generator(s) loaded", true);
-        xLogger.log(Level.INFO, "Running on version: " + getServer().getVersion().toString(), false);
+        xLogger.log(Level.INFO, "Running on server version: " + getServer().getVersion().toString(), false);
     }
 
     @Override
@@ -79,6 +85,7 @@ public class XWorldCore extends JavaPlugin {
         worldManager = new WorldManager();
 
         configManager = new ConfigManager(this);
+        xLogger = new XLogger();
     }
 
     /**
@@ -126,5 +133,17 @@ public class XWorldCore extends JavaPlugin {
      */
     public WorldManager getWorldManager() {
         return worldManager;
+    }
+
+    /**
+     * Check's whether the server running on spigot or not
+     * @return
+     */
+    public boolean isSpigot() {
+        if(getServer().getVersion().contains("Spigot")) {
+            return true;
+        }
+
+        return false;
     }
 }

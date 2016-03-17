@@ -119,4 +119,12 @@ public class PlayerMessenger {
         builder.delete( 0, builder.length() );
         return this;
     }
+
+    /**
+     * Returns the Builder
+     * @return
+     */
+    public StringBuilder getBuilder() {
+        return builder;
+    }
 }
