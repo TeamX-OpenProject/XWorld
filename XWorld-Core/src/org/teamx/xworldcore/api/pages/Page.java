@@ -3,7 +3,7 @@ package org.teamx.xworldcore.api.pages;
 import org.teamx.xworldcore.api.log.PlayerMessenger;
 
 /**
- * Created by lusu007 on 17.03.2016.
+ * @author lusu007
  */
 public class Page extends PlayerMessenger {
 
@@ -11,6 +11,11 @@ public class Page extends PlayerMessenger {
     int nextPageNumber;
     int maxPageNumber;
 
+    /**
+     * Create a new Page
+     * @param currentPageNumber
+     * @param maxPageNumber
+     */
     public Page( int currentPageNumber, int maxPageNumber ) {
         this.currentPageNumber = currentPageNumber;
         this.maxPageNumber = maxPageNumber;
@@ -23,6 +28,10 @@ public class Page extends PlayerMessenger {
         this.nextPageNumber = currentPageNumber + 1;
     }
 
+    /**
+     * Add the content for this page
+     * @param contents
+     */
     public void addContent( String... contents ) {
         addTitle().
                 addCurrentPageLine(currentPageNumber, maxPageNumber).
@@ -33,11 +42,19 @@ public class Page extends PlayerMessenger {
                 addFooter();
     }
 
+    /**
+     * Returns the Page as String
+     * @return
+     */
     @Override
     public String toString() {
         return getBuilder().toString();
     }
 
+    /**
+     * Clears the hole page
+     * @return
+     */
     @Override
     public PlayerMessenger clear() {
         return super.clear();

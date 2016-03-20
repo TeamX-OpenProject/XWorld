@@ -76,6 +76,9 @@ public class XWorldCore extends JavaPlugin {
         xLogger.log(Level.INFO, "Shutting down server...", false );
     }
 
+    /**
+     * Initialize all classes
+     */
     private void initClasses() {
         commandUtil = new CommandUtil(this);
         xWorldCommand = new XWorldCommand();

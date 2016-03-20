@@ -7,25 +7,37 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by lusu007 on 13.03.2016.
+ * @author lusu007
  */
 public class PageManager {
 
     Map<Integer, Page> pages = new HashMap<Integer, Page>();
-
     PlayerMessenger playerMessenger = new PlayerMessenger();
 
     public PageManager() {
     }
 
+    /**
+     * Add a page to the Manager
+     * @param page
+     */
     public void addPage( Page page ) {
         pages.put( pages.size() + 1, page );
     }
 
+    /**
+     * Remove a page with a specified ID
+     * @param id
+     */
     public void removePage( int id ) {
         pages.remove( id );
     }
 
+    /**
+     * Send a specified page to a player
+     * @param player
+     * @param id
+     */
     public void sendPageToPlayer( Player player, int id ) {
         if( !pages.containsKey( id ) ) {
             playerMessenger.addInformation( "Page " + id + " does not exists! Try another page number!" );
@@ -41,6 +53,11 @@ public class PageManager {
         pages.get( id ).sendMessage( player );
     }
 
+    /**
+     * Test whether the page exists or not
+     * @param id
+     * @return
+     */
     public boolean exists( int id ) {
         if( pages.containsKey( id ) ) {
             return true;
@@ -49,6 +66,9 @@ public class PageManager {
         return false;
     }
 
+    /**
+     * Remove all pages from Manager
+     */
     public void clearPages() {
         pages.clear();
     }
