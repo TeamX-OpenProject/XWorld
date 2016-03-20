@@ -30,10 +30,12 @@ public class PageManager {
         if( !pages.containsKey( id ) ) {
             playerMessenger.addInformation( "Page " + id + " does not exists! Try another page number!" );
             playerMessenger.sendMessage( player );
+            return;
         }
 
         if( id < 0 ) {
             pages.get( 0 ).sendMessage( player );
+            return;
         }
 
         pages.get( id ).sendMessage( player );
