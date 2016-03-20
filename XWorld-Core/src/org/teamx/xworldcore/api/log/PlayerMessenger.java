@@ -61,8 +61,8 @@ public class PlayerMessenger {
      * @param max
      * @return
      */
-    public PlayerMessenger addCurrentPageLine( int current, int max) {
-        if ( current <= max && current > 0) {
+    public PlayerMessenger addCurrentPageLine( int current, int max ) {
+        if ( current <= max || current > 0) {
             builder.append( XWorldCore.PREFIX + ChatColor.BOLD + "Page [" + current + "/" + max + "]\n");
         } else {
             builder.append( XWorldCore.PREFIX + ChatColor.BOLD + "Page [#ERROR!/" + max + "]\n");
@@ -75,7 +75,7 @@ public class PlayerMessenger {
      * @param nextPage
      * @return
      */
-    public PlayerMessenger addNextPageLine( int nextPage) {
+    public PlayerMessenger addNextPageLine( int nextPage ) {
         builder.append( XWorldCore.PREFIX + ChatColor.BOLD + "Goto next page with /xworld [" + nextPage + "]\n");
         return this;
     }
@@ -94,7 +94,7 @@ public class PlayerMessenger {
      * @param infos
      * @return
      */
-    public PlayerMessenger addInformations( String... infos) {
+    public PlayerMessenger addInformations( String... infos ) {
         for ( String info : infos ) {
             builder.append( XWorldCore.PREFIX + ChatColor.YELLOW + info + "\n");
         }
@@ -106,8 +106,8 @@ public class PlayerMessenger {
      * @param info
      * @return
      */
-    public PlayerMessenger addInformation( String info) {
-        builder.append( XWorldCore.PREFIX + info + "\n");
+    public PlayerMessenger addInformation( String info ) {
+        builder.append( XWorldCore.PREFIX + ChatColor.YELLOW + info + "\n");
         return this;
     }
 

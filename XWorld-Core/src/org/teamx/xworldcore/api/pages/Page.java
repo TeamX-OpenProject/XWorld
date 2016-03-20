@@ -11,7 +11,16 @@ public class Page extends PlayerMessenger {
     int nextPageNumber;
     int maxPageNumber;
 
-    public Page() {
+    public Page( int currentPageNumber, int maxPageNumber ) {
+        this.currentPageNumber = currentPageNumber;
+        this.maxPageNumber = maxPageNumber;
+
+        if( currentPageNumber == maxPageNumber ) {
+            this.nextPageNumber = currentPageNumber;
+            return;
+        }
+
+        this.nextPageNumber = currentPageNumber + 1;
     }
 
     public void addContent( String... contents ) {
@@ -22,16 +31,6 @@ public class Page extends PlayerMessenger {
                 addEmptyLine().
                 addNextPageLine(nextPageNumber).
                 addFooter();
-    }
-
-    public void setPageNumbers( int current, int max ) {
-        this.currentPageNumber = current;
-        this.nextPageNumber = current + 1;
-        this.maxPageNumber = max;
-
-        if( nextPageNumber >= max ) {
-            nextPageNumber = max;
-        }
     }
 
     @Override
