@@ -3,6 +3,7 @@ package org.teamx.xworldcore;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.teamx.xworldcore.api.XWorld;
 import org.teamx.xworldcore.api.log.XLogger;
 import org.teamx.xworldcore.command.*;
 import org.teamx.xworldcore.configuration.ConfigManager;
@@ -20,12 +21,7 @@ import java.util.logging.Level;
  *
  */
 public class XWorldCore extends JavaPlugin {
-
     CommandUtil commandUtil;
-    XWorldCommand xWorldCommand;
-    CloneCommand cloneCommand;
-    TestCommand testCommand;
-    ConfirmCommand confirmCommand;
     ConfigManager configManager;
     WorldManager worldManager;
 
@@ -47,13 +43,8 @@ public class XWorldCore extends JavaPlugin {
         if(isSpigot()) {
             xLogger.log(Level.INFO, "-- STARTUP ON SPIGOT --", false);
         } else {
-            xLogger.log(Level.INFO, "-- STARTUP (Please use spigot!)--", false);
+            xLogger.log(Level.INFO, "-- STARTUP (We recommend Spigot!)--", false);
         }
-
-        commandUtil.registerCommands(xWorldCommand);
-        commandUtil.registerCommands(cloneCommand);
-        commandUtil.registerCommands(testCommand);
-        commandUtil.registerCommands(confirmCommand);
 
         //Here everything else..
 
@@ -81,11 +72,12 @@ public class XWorldCore extends JavaPlugin {
      */
     private void initClasses() {
         commandUtil = new CommandUtil(this);
-        xWorldCommand = new XWorldCommand();
-        cloneCommand = new CloneCommand();
-        testCommand = new TestCommand(this);
-        confirmCommand = new ConfirmCommand();
-        worldManager = new WorldManager();
+
+        commandUtil.registerCommands(new XWorldCommand());
+        commandUtil.registerCommands(new CloneCommand());
+        commandUtil.registerCommands(new TestCommand( this )); //TODO: Remove Constructorparameter plugin
+        commandUtil.registerCommands(new ConfirmCommand());
+        commandUtil.registerCommands( new VersionCommand() );
 
         configManager = new ConfigManager(this);
         xLogger = new XLogger();
