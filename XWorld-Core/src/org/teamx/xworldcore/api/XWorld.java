@@ -61,6 +61,8 @@ public class XWorld implements IXWorld {
 
     private XWorldCore plugin = XWorldCore.getInstance();
 
+    private ConfigManager configManager = XWorldCore.getInstance().getConfigManager();
+
 
     public XWorld(String name, long seed, World.Environment env, String generator, WorldType worldType) {
         this.worldName = name;
