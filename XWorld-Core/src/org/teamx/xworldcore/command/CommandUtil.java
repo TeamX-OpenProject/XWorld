@@ -27,8 +27,8 @@ public class CommandUtil implements CommandExecutor {
     private CommandMap map;
     private XWorldCore plugin;
 
-    public CommandUtil(XWorldCore plugin) {
-        this.plugin = plugin;
+    public CommandUtil() {
+        this.plugin = XWorldCore.getInstance();
 
         if (plugin.getServer().getPluginManager() instanceof SimplePluginManager) {
             SimplePluginManager manager = (SimplePluginManager) plugin.getServer().getPluginManager();
@@ -82,7 +82,7 @@ public class CommandUtil implements CommandExecutor {
             if (m.getAnnotation(IXCommand.class) != null) {
                 IXCommand command = m.getAnnotation(IXCommand.class);
                 if (m.getParameterTypes().length > 1 || m.getParameterTypes()[0] != XCommand.class) {
-                    XWorldCore.getxLogger().log( Level.WARNING, "In register commands is a failure!", true);
+                    XWorldCore.getxLogger().log( Level.WARNING, "In register commands is a failure!", false, true);
                     continue;
                 }
                 registerCommand(command, command.name(), m, object);

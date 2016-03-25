@@ -18,12 +18,11 @@ import java.io.File;
 public class CreateCommand {
 
     private static XWorldCore plugin;
-    private static final String PREFIX = plugin.PREFIX;
 
     PlayerMessenger playerMessenger = new PlayerMessenger();
 
-    public CreateCommand(XWorldCore plugin) {
-        this.plugin = plugin;
+    public CreateCommand() {
+        this.plugin = XWorldCore.getInstance();
     }
 
     @IXCommand(name = "xworld.create", permission = "xworld.command.create", usage = "/xworld create [name]", aliases = {"xw.create", "teamx.create"}, description = "Creates a new world")

@@ -22,7 +22,7 @@ import java.util.logging.Level;
  */
 public class XWorldCore extends JavaPlugin {
     CommandUtil commandUtil;
-    ConfigManager configManager;
+    static ConfigManager configManager;
     WorldManager worldManager;
 
     static XLogger xLogger;
@@ -41,46 +41,58 @@ public class XWorldCore extends JavaPlugin {
         initClasses();
 
         if(isSpigot()) {
-            xLogger.log(Level.INFO, "-- STARTUP ON SPIGOT --", false);
+            xLogger.log( Level.INFO, "-- STARTUP ON SPIGOT --", false, false );
         } else {
-            xLogger.log(Level.INFO, "-- STARTUP (We recommend Spigot!)--", false);
+            xLogger.log( Level.INFO, "-- STARTUP (We recommend Spigot!)--", false, false );
         }
-
-        //Here everything else..
-
 
         long stopTime = System.currentTimeMillis();
 
         xLogger.log( Level.INFO, "XWorld Plugin version "
                 + "v" + this.getDescription().getVersion() + " by "
                 + this.getDescription().getAuthors().toString().replaceAll( "(\\[|\\])", "" ) + " enabled! (In "
-                + (stopTime - startTime) + "ms)", true);
+                + ( stopTime - startTime ) + "ms)", false, true );
 
-        xLogger.log(Level.INFO, getGenerators() + " - World Generator(s) loaded", true);
-        xLogger.log(Level.INFO, "Running on server version: " + getServer().getVersion().toString(), false);
+        xLogger.log( Level.INFO, getGenerators() + " - World Generator(s) loaded", false, true );
+        xLogger.log( Level.INFO, "Running on server version: " + getServer().getVersion().toString(), true, false );
     }
 
     @Override
     public void onDisable() {
-        xLogger.log(Level.INFO, "Unloading world(s)...", true );
-        xLogger.log(Level.INFO, "Saving config's..,", true );
-        xLogger.log(Level.INFO, "Shutting down server...", false );
+        xLogger.log( Level.INFO, "Unloading world(s)...", true, true );
+        xLogger.log( Level.INFO, "Saving config's..,", true, true );
+        xLogger.log( Level.INFO, "Shutting down server...", true, false );
     }
 
     /**
      * Initialize all classes
      */
     private void initClasses() {
-        commandUtil = new CommandUtil(this);
-
-        commandUtil.registerCommands(new XWorldCommand());
-        commandUtil.registerCommands(new CloneCommand());
-        commandUtil.registerCommands(new TestCommand( this )); //TODO: Remove Constructorparameter plugin
-        commandUtil.registerCommands(new ConfirmCommand());
-        commandUtil.registerCommands( new VersionCommand() );
-
-        configManager = new ConfigManager(this);
+        commandUtil = new CommandUtil();
         xLogger = new XLogger();
+
+        configManager = new ConfigManager();
+        xLogger.log( Level.INFO, "Created ConfigManager!", true, true );
+
+        xLogger.log( Level.INFO, "Registering all commands....", true, true );
+
+        commandUtil.registerCommands( new CloneCommand() );
+        commandUtil.registerCommands( new ConfirmCommand() );
+        commandUtil.registerCommands( new CreateCommand() );
+        commandUtil.registerCommands( new ImportCommand() );
+        commandUtil.registerCommands( new LoadCommand() );
+        commandUtil.registerCommands( new ModifyPropertiesCommand() );
+        commandUtil.registerCommands( new PurgeCommand() );
+        commandUtil.registerCommands( new RemoveCommand() );
+        commandUtil.registerCommands( new SetSpawnCommand() );
+        commandUtil.registerCommands( new TeleportCommand() );
+        commandUtil.registerCommands( new TestCommand() );
+        commandUtil.registerCommands( new UnloadCommand() );
+        commandUtil.registerCommands( new VersionCommand() );
+        commandUtil.registerCommands( new WorldsCommand() );
+        commandUtil.registerCommands( new XWorldCommand() );
+
+        xLogger.log( Level.INFO, "All commands registered!", true, true );
     }
 
     /**
@@ -102,7 +114,7 @@ public class XWorldCore extends JavaPlugin {
      * Return's the ConfigManager instance
      * @return
      */
-    public ConfigManager getConfigManager() {
+    public static ConfigManager getConfigManager() {
         return configManager;
     }
 

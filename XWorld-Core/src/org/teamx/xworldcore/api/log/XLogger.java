@@ -16,7 +16,6 @@ import java.util.logging.Level;
  * @author lusu007
  */
 public class XLogger {
-
     private File file;
     private File directory;
 
@@ -37,37 +36,42 @@ public class XLogger {
      * Log a message to file. If the boolean is true the log message would be send to the console too.
      * @param loggingLevel
      * @param message
+     * @param isDebug
      * @param console
      */
-    public void log(Level loggingLevel, String message, boolean console) {
+    public void log(Level loggingLevel, String message, boolean isDebug, boolean console) {
         Date date = new Date();
-        DateFormat format = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
-        String logDate = format.format(date);
+        DateFormat format = new SimpleDateFormat( "dd-MM-yyyy HH:mm:ss" );
+        String logDate = format.format( date );
 
         FileWriter fileWriter = null;
         try {
-            fileWriter = new FileWriter( XWorldCore.getInstance().getDataFolder() + "/log/log.txt", true);
+            fileWriter = new FileWriter( XWorldCore.getInstance().getDataFolder() + "/log/log.txt", true );
         } catch ( IOException e ) {
             e.printStackTrace();
+        }
+
+        if( isDebug == true && XWorldCore.getConfigManager().getConfigConfiguration().getBoolean( "debug" ) == false ) {
+            return;
         }
 
         StringBuilder stringBuilder = new StringBuilder();
 
-        stringBuilder.append("[" + logDate + "] ")
-                .append("[XWorldCore/" + loggingLevel.getName() + "]: ")
-                .append(message);
+        stringBuilder.append( "[" + logDate + "] " )
+                .append( "[XWorldCore/" + loggingLevel.getName() + "]: " )
+                .append( message );
 
-        if(console == true) {
-            XWorldCore.getInstance().getLogger().log(loggingLevel, message);
+        if ( console == true ) {
+            XWorldCore.getInstance().getLogger().log( loggingLevel, message );
         }
 
         try {
-            fileWriter.write(stringBuilder.toString());
-            fileWriter.append(System.getProperty("line.separator"));
+            fileWriter.write( stringBuilder.toString() );
+            fileWriter.append( System.getProperty( "line.separator" ) );
         } catch ( IOException e ) {
             e.printStackTrace();
         } finally {
-            if (fileWriter != null) {
+            if ( fileWriter != null ) {
                 try {
                     fileWriter.close();
                 } catch ( IOException e ) {
@@ -84,11 +88,11 @@ public class XLogger {
      * @param player
      */
     public void logMessageToPlayer(Level info, String message, Player player) {
-        XWorldCore.getxLogger().log(Level.INFO, "--- BEGINNING OF MESSAGE --- ", false);
-        XWorldCore.getxLogger().log(Level.INFO, "Send following message to " + player.getName() + ":", false);
+        XWorldCore.getxLogger().log(Level.INFO, "--- BEGINNING OF MESSAGE --- ", false, false);
+        XWorldCore.getxLogger().log(Level.INFO, "Send following message to " + player.getName() + ":", false, false);
         for( String s : message.split("\n") ) {
-            XWorldCore.getxLogger().log( Level.INFO, ChatColor.stripColor(s), false);
+            XWorldCore.getxLogger().log( Level.INFO, ChatColor.stripColor(s), false, false);
         }
-        XWorldCore.getxLogger().log(Level.INFO, "---    END OF MESSAGE    --- ", false);
+        XWorldCore.getxLogger().log(Level.INFO, "---    END OF MESSAGE    --- ", false, false);
     }
 }

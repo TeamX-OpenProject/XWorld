@@ -26,6 +26,8 @@ public interface IXWorldUtil {
 
     boolean isLoaded();
 
+    void purge();
+
     String getName();
 
 

@@ -1,7 +1,14 @@
 package org.teamx.xworldcore.command;
 
+import org.teamx.xworldcore.api.command.IXCommand;
+
 /**
- * @author Shustin
+ * @author lusu007
  */
 public class ModifyPropertiesCommand {
+
+    @IXCommand(name = "xworld.modify", permission = "xworld.command.modify", usage = "/xworld modify {World} [Key] [Value]", aliases = {"xw.modify", "teamx.modify"}, description = "Modify a property from the configuration file or a world configuration file")
+    public void xWorldCommand( XCommand xCommand ) {
+
+    }
 }
