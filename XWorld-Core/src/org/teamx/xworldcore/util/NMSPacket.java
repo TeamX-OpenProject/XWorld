@@ -6,9 +6,7 @@ import org.bukkit.entity.Player;
 import java.lang.reflect.Field;
 
 /**
- *
  * @author lusu007
- *
  */
 public class NMSPacket {
 

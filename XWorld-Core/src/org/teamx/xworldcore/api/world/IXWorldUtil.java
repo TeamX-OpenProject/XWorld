@@ -1,10 +1,7 @@
 package org.teamx.xworldcore.api.world;
 
-import org.bukkit.Difficulty;
 import org.bukkit.World;
-import org.bukkit.WorldCreator;
 import org.bukkit.WorldType;
-import org.bukkit.generator.ChunkGenerator;
 import org.teamx.xworldcore.api.XWorld;
 
 /**

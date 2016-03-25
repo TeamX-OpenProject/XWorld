@@ -22,9 +22,9 @@ import java.util.logging.Level;
  */
 public class XWorldCore extends JavaPlugin {
     CommandUtil commandUtil;
-    static ConfigManager configManager;
     WorldManager worldManager;
 
+    static ConfigManager configManager;
     static XLogger xLogger;
 
     private static XWorldCore instance;
@@ -65,7 +65,7 @@ public class XWorldCore extends JavaPlugin {
     }
 
     /**
-     * Initialize all classes
+     * Initialize all classes, registering commands
      */
     private void initClasses() {
         commandUtil = new CommandUtil();
