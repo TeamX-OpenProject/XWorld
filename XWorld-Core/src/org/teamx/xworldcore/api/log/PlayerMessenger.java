@@ -32,7 +32,7 @@ public class PlayerMessenger {
             XWorldCore.getxLogger().logMessageToPlayer( Level.INFO, builder.toString(), (Player) commandSender );
             commandSender.sendMessage( builder.toString() );
         } else if ( commandSender instanceof ConsoleCommandSender) {
-            XWorldCore.getxLogger().log(Level.WARNING, "Can't execute command as console", true);
+            XWorldCore.getxLogger().log(Level.WARNING, "Can't execute command as console", false, true);
         }
         return this;
     }

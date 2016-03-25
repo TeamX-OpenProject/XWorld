@@ -10,7 +10,7 @@ import org.teamx.xworldcore.api.log.PlayerMessenger;
  */
 public class VersionCommand {
 
-    @IXCommand(name = "xworld.version", permission = "xworld.command.version", usage = "/xworld", aliases = {"xw", "teamx"}, description = "Print's out the current version of XWorld")
+    @IXCommand(name = "xworld.version", permission = "xworld.command.version", usage = "/xworld version", aliases = {"xw.version", "teamx.version"}, description = "Print's out the current version of XWorld")
     public void xWorldCommand( XCommand xCommand ) {
         Player player = xCommand.getPlayer();
         PlayerMessenger playerMessenger = new PlayerMessenger();

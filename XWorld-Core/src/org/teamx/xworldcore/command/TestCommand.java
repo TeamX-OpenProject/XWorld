@@ -28,8 +28,8 @@ public class TestCommand {
 
     static PlayerMessenger playerMessenger = new PlayerMessenger();
 
-    public TestCommand(XWorldCore plugin) {
-        this.plugin = plugin;
+    public TestCommand() {
+        this.plugin = XWorldCore.getInstance();
     }
 
     @IXCommand(name = "xworld.test", permission = "xworld.test", usage = "/xworld test", aliases = {"xw.test", "teamx.test"}, description = "Testing some stuff!")
