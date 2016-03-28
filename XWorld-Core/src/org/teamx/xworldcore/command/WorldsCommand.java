@@ -7,7 +7,7 @@ import org.teamx.xworldcore.api.command.IXCommand;
  */
 public class WorldsCommand {
 
-    @IXCommand(name = "xworld.worlds", permission = "xworld.command.worlds", usage = "/xworld worlds", aliases = {"xw", "teamx"}, description = "Print's out a list of all existing world's")
+    @IXCommand(name = "xworld.worlds", permission = "xworld.command.worlds", usage = "/xworld worlds", aliases = {"xw", "teamx"}, description = "Print's out a list of all existing world's", minArgs = 1, maxArgs = 2)
     public void xWorldCommand( XCommand xCommand ) {
 
     }

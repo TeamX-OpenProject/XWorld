@@ -12,7 +12,7 @@ import org.teamx.xworldcore.api.pages.PageManager;
  */
 public class XWorldCommand {
 
-    @IXCommand(name = "xworld", permission = "xworld.command.xworld", usage = "/xworld [page]", aliases = {"xw", "teamx"}, description = "This is the XWorld base command")
+    @IXCommand(name = "xworld", permission = "xworld.command.xworld", usage = "/xworld [page]", aliases = {"xw", "teamx"}, description = "This is the XWorld base command", minArgs = 0, maxArgs = 1)
     public void xWorldCommand(XCommand xCommand) {
         Player player = xCommand.getPlayer();
         String[] args = xCommand.getArguments();

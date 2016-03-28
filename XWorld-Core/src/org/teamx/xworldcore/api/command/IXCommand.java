@@ -25,4 +25,8 @@ public abstract @interface IXCommand {
 
     public String usage() default "";
 
+    public int minArgs();
+
+    public int maxArgs();
+
 }

@@ -74,5 +74,35 @@ public class XCommand {
         return arguments[index];
     }
 
+    public String getKeyG() {
+        String key = null;
+        for (int i = 0; i < arguments.length; i++) {
+            if (arguments[i].equalsIgnoreCase("-g")) {
+                key = arguments[i] + 1;
+            }
+        }
+
+        if(key != null) {
+            return key;
+        } else {
+            return null;
+        }
+    }
+
+    public String getKeyS() {
+        String key = null;
+        for (int i = 0; i < arguments.length; i++) {
+            if (arguments[i].equalsIgnoreCase("-s")) {
+                key = arguments[i] + 1;
+            }
+        }
+
+        if(key != null) {
+            return key;
+        } else {
+            return null;
+        }
+    }
+
 
 }
