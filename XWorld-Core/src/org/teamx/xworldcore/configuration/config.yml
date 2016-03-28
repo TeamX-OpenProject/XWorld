@@ -1,0 +1,13 @@
+# ---------------------------------------------------- #
+#  This configuration helps you to customize XWorld    #
+#                                                      #
+#  You cant delete any value, it will be regenerated   #
+# ---------------------------------------------------- #
+
+# true - Console and/or Log-File shows debug-messages
+# false - No debug-messages were shown
+debug: false
+
+# true - Console and/or Log-File displays permission errors
+# false - No pernussoin errors were shown
+displaypermerror: true

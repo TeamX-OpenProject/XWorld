@@ -3,9 +3,9 @@ package org.teamx.xworldcore;
 import org.bukkit.ChatColor;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.teamx.xworldcore.api.XWorld;
 import org.teamx.xworldcore.api.log.XLogger;
 import org.teamx.xworldcore.command.*;
+import org.teamx.xworldcore.config.Config;
 import org.teamx.xworldcore.configuration.ConfigManager;
 import org.teamx.xworldcore.util.WorldManager;
 
@@ -23,6 +23,7 @@ import java.util.logging.Level;
 public class XWorldCore extends JavaPlugin {
     CommandUtil commandUtil;
     WorldManager worldManager;
+    Config config;
 
     static ConfigManager configManager;
     static XLogger xLogger;
@@ -71,7 +72,8 @@ public class XWorldCore extends JavaPlugin {
         commandUtil = new CommandUtil();
         xLogger = new XLogger();
 
-        configManager = new ConfigManager();
+        //configManager = new ConfigManager();
+        config = new Config( "org/teamx/xworldcore/configuration/config.yml" );
         xLogger.log( Level.INFO, "Created ConfigManager!", true, true );
 
         xLogger.log( Level.INFO, "Registering all commands....", true, true );

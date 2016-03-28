@@ -24,7 +24,7 @@ public class ConfigManager {
 
     public ConfigManager() {
         this.plugin = XWorldCore.getInstance();
-        this.config = new File(plugin.getDataFolder(), "config.yml");
+        this.config = new File(plugin.getDataFolder(), "org/teamx/xworldcore/configuration/config.yml" );
         this.configConfiguration = YamlConfiguration.loadConfiguration(this.config);
         loadConfigurations();
     }
@@ -32,6 +32,7 @@ public class ConfigManager {
     /**
      * Creates the config.yml if it not exists
      */
+    @Deprecated
     public void loadConfigurations() {
         if (!this.config.exists()) {
             this.configConfiguration.options().copyDefaults(true);
@@ -42,6 +43,7 @@ public class ConfigManager {
     /**
      * Saves the config.yml with default values
      */
+    @Deprecated
     public void saveConfig() {
         try {
             configConfiguration.options().header(
@@ -127,17 +129,17 @@ public class ConfigManager {
         worldConfiguration.set("world.settings.gamemode", "SURVIVAL");
         worldConfiguration.set("world.settings.difficulty", "EASY");
         worldConfiguration.set("world.settings.changeWeather", true);
-        worldConfiguration.set("world.settings.spawnMobs", true);
+        worldConfiguration.set("world.settings.spawnMonsters", true);
         worldConfiguration.set("world.settings.spawnAnimals", true);
-        worldConfiguration.set("world.settings.oldCombat", true);
+        worldConfiguration.set("world.settings.oldCombat", false);
         worldConfiguration.set("world.settings.naturalGeneration", true);
-        worldConfiguration.set("world.settings.blockbreak", true);
+        worldConfiguration.set("world.settings.blockBreak", true);
         worldConfiguration.set("world.settings.chat", true);
         worldConfiguration.set("world.settings.pvp", true);
         worldConfiguration.set("world.settings.fly", true);
         worldConfiguration.set("world.settings.commandTeleport", true);
         worldConfiguration.set("world.settings.signTeleport", true);
-        worldConfiguration.set("world.settings.bedrespawn", true);
+        worldConfiguration.set("world.settings.bedRespawn", true);
         worldConfiguration.set("world.settings.hunger", true);
         worldConfiguration.set("world.settings.storm", true);
         worldConfiguration.set("world.settings.damage", true);
