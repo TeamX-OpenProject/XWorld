@@ -25,7 +25,7 @@ public class CreateCommand {
         this.plugin = XWorldCore.getInstance();
     }
 
-    @IXCommand(name = "xworld.create", permission = "xworld.command.create", usage = "/xworld create [name]", aliases = {"xw.create", "teamx.create"}, description = "Creates a new world")
+    @IXCommand(name = "xworld.create", permission = "xworld.command.create", usage = "/xworld create [name]", aliases = {"xw.create", "teamx.create"}, description = "Creates a new world", minArgs = 1, maxArgs = 2 )
     public void createCommand(XCommand xCommand) {
         Player player = xCommand.getPlayer();
         String[] args = xCommand.getArguments();

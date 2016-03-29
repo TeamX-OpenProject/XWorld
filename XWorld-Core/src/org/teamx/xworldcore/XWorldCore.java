@@ -6,7 +6,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.teamx.xworldcore.api.log.XLogger;
 import org.teamx.xworldcore.command.*;
 import org.teamx.xworldcore.config.Config;
-import org.teamx.xworldcore.configuration.ConfigManager;
+import org.teamx.xworldcore.config.WorldConfigManager;
 import org.teamx.xworldcore.util.WorldManager;
 
 import java.util.ArrayList;
@@ -23,9 +23,9 @@ import java.util.logging.Level;
 public class XWorldCore extends JavaPlugin {
     CommandUtil commandUtil;
     WorldManager worldManager;
-    Config config;
 
-    static ConfigManager configManager;
+    static Config config;
+    static WorldConfigManager configManager;
     static XLogger xLogger;
 
     private static XWorldCore instance;
@@ -72,9 +72,10 @@ public class XWorldCore extends JavaPlugin {
         commandUtil = new CommandUtil();
         xLogger = new XLogger();
 
-        //configManager = new ConfigManager();
-        config = new Config( "org/teamx/xworldcore/configuration/config.yml" );
-        xLogger.log( Level.INFO, "Created ConfigManager!", true, true );
+        //configManager = new WorldConfigManager();
+        config = new Config();
+
+        xLogger.log( Level.INFO, "Created WorldConfigManager!", true, true );
 
         xLogger.log( Level.INFO, "Registering all commands....", true, true );
 
@@ -113,10 +114,10 @@ public class XWorldCore extends JavaPlugin {
     }
 
     /**
-     * Return's the ConfigManager instance
+     * Return's the WorldConfigManager instance
      * @return
      */
-    public static ConfigManager getConfigManager() {
+    public static WorldConfigManager getConfigManager() {
         return configManager;
     }
 
@@ -154,5 +155,13 @@ public class XWorldCore extends JavaPlugin {
         }
 
         return false;
+    }
+
+    /**
+     * Return's the global plugin config object
+     * @return
+     */
+    public static Config getPluginConfig() {
+        return config;
     }
 }

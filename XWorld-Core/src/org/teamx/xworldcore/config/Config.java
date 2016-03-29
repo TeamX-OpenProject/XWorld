@@ -1,89 +1,65 @@
 package org.teamx.xworldcore.config;
 
-import org.bukkit.Bukkit;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.YamlConfiguration;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.teamx.xworldcore.XWorldCore;
+import org.teamx.xworldcore.api.log.XLogger;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
+import java.util.logging.Level;
 
 /**
  * @author lusu007
  */
 public class Config {
 
-    private YamlConfiguration configFile;
-    private File file;
-    private boolean loaded = false;
-    private XWorldCore plugin;
-    private String fileName;
+    File file;
+    FileConfiguration fileConfiguration;
+    XLogger xLogger;
 
-    public Config( String fileName ) {
-        this.plugin = XWorldCore.getInstance();
-        this.fileName = fileName;
+    /**
+     * Create's a new Config instance and load's the config
+     */
+    public Config() {
+        xLogger = XWorldCore.getxLogger();
+
+        loadConfig();
+
+        file = new File( XWorldCore.getInstance().getDataFolder() + "/config.yml" );
+        fileConfiguration = XWorldCore.getInstance().getConfig();
     }
 
-    public YamlConfiguration getConfig() {
-        return configFile;
+    /**
+     * Load's the config
+     */
+    private void loadConfig() {
+        XWorldCore.getInstance().saveDefaultConfig();
     }
 
-    public File getConfigFile() {
-        if( !loaded ) {
-            loadConfig();
-        }
+    /**
+     * Return's File Object
+     * @return
+     */
+    public File getFile() {
         return file;
     }
 
-    public void loadConfig() {
-        file = new File( Bukkit.getServer().getPluginManager().getPlugin( this.plugin.getName() ).getDataFolder(), fileName );
-
-        if( file.exists() ) {
-            configFile = new YamlConfiguration();
-
-            try {
-                configFile.load( file );
-            } catch ( InvalidConfigurationException | IOException e ) {
-                e.printStackTrace();
-            }
-
-            loaded = true;
-        } else {
-            try {
-                Bukkit.getServer().getPluginManager().getPlugin( plugin.getName() ).getDataFolder().mkdir();
-                InputStream jarURL = Config.class.getResourceAsStream( "/" + fileName );
-                copyFile( jarURL, file );
-                configFile = new YamlConfiguration();
-                configFile.load( file );
-                loaded = true;
-            } catch ( Exception e ) {
-                e.printStackTrace();
-            }
-        }
+    /**
+     * Return's FileConfiguration to access the data inside the File
+     * @return
+     */
+    public FileConfiguration getConfig() {
+        return fileConfiguration;
     }
 
-    private void copyFile( InputStream in, File out ) throws Exception {
-        InputStream inputStream = in;
-        FileOutputStream fileOutputStream = new FileOutputStream(out);
+    /**
+     * Save the config
+     */
+    public void save() {
         try {
-            byte[] buf = new byte[1024];
-            int i = 0;
-
-            while ( ( i = inputStream.read( buf ) ) != -1 ) {
-                fileOutputStream.write( buf, 0, i );
-            }
-        } catch ( Exception e ) {
-            throw e;
-        } finally {
-            if( inputStream != null ) {
-                inputStream.close();
-            }
-
-            if( fileOutputStream != null ) {
-                fileOutputStream.close();
-            }
+            getConfig().save( file );
+        } catch ( IOException e ) {
+            xLogger.log( Level.SEVERE, "Saved config uncorrectly!!! Exception: \n" + e.toString(), true, false );
         }
     }
 }

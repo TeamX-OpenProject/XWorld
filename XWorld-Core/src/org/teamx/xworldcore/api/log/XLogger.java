@@ -28,7 +28,7 @@ public class XLogger {
                 directory = new File( XWorldCore.getInstance().getDataFolder() + "/log/" );
                 directory.mkdir();
             }
-            file = new File(XWorldCore.getInstance().getDataFolder() + "/log/log.txt");
+            file = new File( XWorldCore.getInstance().getDataFolder() + "/log/log.txt" );
         }
     }
 
@@ -39,7 +39,7 @@ public class XLogger {
      * @param isDebug
      * @param console
      */
-    public void log(Level loggingLevel, String message, boolean isDebug, boolean console) {
+    public void log( Level loggingLevel, String message, boolean isDebug, boolean console ) {
         Date date = new Date();
         DateFormat format = new SimpleDateFormat( "dd-MM-yyyy HH:mm:ss" );
         String logDate = format.format( date );
@@ -51,7 +51,7 @@ public class XLogger {
             e.printStackTrace();
         }
 
-        if( isDebug == true && XWorldCore.getConfigManager().getConfigConfiguration().getBoolean( "debug" ) == false ) {
+        if( isDebug == true && XWorldCore.getPluginConfig().getConfig().getBoolean( "debug" ) == false ) {
             return;
         }
 

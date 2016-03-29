@@ -3,19 +3,10 @@ package org.teamx.xworldcore.api;
 import org.bukkit.*;
 import org.bukkit.attribute.AttributeInstance;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
-import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.permissions.Permission;
-import org.bukkit.plugin.Plugin;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.world.IXWorld;
-import org.teamx.xworldcore.api.world.IXWorldUtil;
-import org.teamx.xworldcore.configuration.ConfigManager;
-
-import java.io.File;
-import java.io.IOException;
-import java.util.logging.Level;
+import org.teamx.xworldcore.config.WorldConfigManager;
 
 /**
  * @lusu007
@@ -61,7 +52,7 @@ public class XWorld implements IXWorld {
 
     private XWorldCore plugin = XWorldCore.getInstance();
 
-    private ConfigManager configManager = XWorldCore.getInstance().getConfigManager();
+    private WorldConfigManager configManager = XWorldCore.getInstance().getConfigManager();
 
 
     public XWorld(String name, long seed, World.Environment env, String generator, WorldType worldType) {

@@ -32,7 +32,7 @@ public class TestCommand {
         this.plugin = XWorldCore.getInstance();
     }
 
-    @IXCommand(name = "xworld.test", permission = "xworld.test", usage = "/xworld test", aliases = {"xw.test", "teamx.test"}, description = "Testing some stuff!")
+    @IXCommand(name = "xworld.test", permission = "xworld.test", usage = "/xworld test", aliases = {"xw.test", "teamx.test"}, description = "Testing some stuff!", minArgs = 1, maxArgs = 2 )
     public boolean testCommand(XCommand xCommand) {
         Player player = xCommand.getPlayer();
         World world = player.getWorld();

@@ -5,7 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.teamx.xworldcore.XWorldCore;
 import org.teamx.xworldcore.api.XWorld;
 import org.teamx.xworldcore.api.world.IXWorldUtil;
-import org.teamx.xworldcore.configuration.ConfigManager;
+import org.teamx.xworldcore.config.WorldConfigManager;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -16,7 +16,7 @@ import java.util.logging.Level;
 public class WorldManager implements IXWorldUtil {
 
     FileConfiguration worldConfiguration;
-    private final ConfigManager configManager = XWorldCore.getInstance().getConfigManager();
+    private final WorldConfigManager configManager = XWorldCore.getInstance().getConfigManager();
 
     /**
      * Build's a new world
