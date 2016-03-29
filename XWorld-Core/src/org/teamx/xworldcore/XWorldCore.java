@@ -25,7 +25,7 @@ public class XWorldCore extends JavaPlugin {
     WorldManager worldManager;
 
     static Config config;
-    static WorldConfigManager configManager;
+    static WorldConfigManager worldConfigManager;
     static XLogger xLogger;
 
     private static XWorldCore instance;
@@ -72,7 +72,7 @@ public class XWorldCore extends JavaPlugin {
         commandUtil = new CommandUtil();
         xLogger = new XLogger();
 
-        //configManager = new WorldConfigManager();
+        worldConfigManager = new WorldConfigManager();
         config = new Config();
 
         xLogger.log( Level.INFO, "Created WorldConfigManager!", true, true );
@@ -117,8 +117,8 @@ public class XWorldCore extends JavaPlugin {
      * Return's the WorldConfigManager instance
      * @return
      */
-    public static WorldConfigManager getConfigManager() {
-        return configManager;
+    public static WorldConfigManager getWorldConfigManager() {
+        return worldConfigManager;
     }
 
     /**

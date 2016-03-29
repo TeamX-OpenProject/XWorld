@@ -16,7 +16,7 @@ import java.util.logging.Level;
 public class WorldManager implements IXWorldUtil {
 
     FileConfiguration worldConfiguration;
-    private final WorldConfigManager configManager = XWorldCore.getInstance().getConfigManager();
+    private final WorldConfigManager worldConfigManager = XWorldCore.getInstance().getWorldConfigManager();
 
     /**
      * Build's a new world
@@ -72,7 +72,7 @@ public class WorldManager implements IXWorldUtil {
         Location location = Bukkit.getWorld(name).getSpawnLocation();
 
         File file = new File(name);
-        configManager.setupWorldConfig(file, seedLong, structure, worldType, environment, location);
+        worldConfigManager.setupWorldConfig(file, seedLong, structure, worldType, environment, location);
     }
 
     /**
