@@ -25,6 +25,7 @@ public class XLogger {
     public XLogger() {
         if (file == null) {
             if(directory == null) {
+                XWorldCore.getInstance().getDataFolder().mkdir();
                 directory = new File( XWorldCore.getInstance().getDataFolder() + "/log/" );
                 directory.mkdir();
             }
