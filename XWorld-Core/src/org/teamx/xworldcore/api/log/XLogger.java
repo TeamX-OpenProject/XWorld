@@ -23,14 +23,7 @@ public class XLogger {
      * Create a new XLogger
      */
     public XLogger() {
-        if (file == null) {
-            if(directory == null) {
-                XWorldCore.getInstance().getDataFolder().mkdir();
-                directory = new File( XWorldCore.getInstance().getDataFolder() + "/log/" );
-                directory.mkdir();
-            }
-            file = new File( XWorldCore.getInstance().getDataFolder() + "/log/log.txt" );
-        }
+        createLogFile();
     }
 
     /**
@@ -95,5 +88,19 @@ public class XLogger {
             XWorldCore.getxLogger().log( Level.INFO, ChatColor.stripColor(s), false, false);
         }
         XWorldCore.getxLogger().log(Level.INFO, "---    END OF MESSAGE    --- ", false, false);
+    }
+
+    /**
+     * Create's the log File
+     */
+    private void createLogFile() {
+        if (file == null) {
+            if(directory == null) {
+                XWorldCore.getInstance().getDataFolder().mkdir();
+                directory = new File( XWorldCore.getInstance().getDataFolder() + "/log/" );
+                directory.mkdir();
+            }
+            file = new File( XWorldCore.getInstance().getDataFolder() + "/log/log.txt" );
+        }
     }
 }
