@@ -7,7 +7,7 @@ import org.teamx.xworldcore.api.command.IXCommand;
  */
 public class RemoveCommand {
 
-    @IXCommand(name = "xworld.remove", permission = "xworld.command.remove", usage = "/xworld remove [World]", aliases = {"xw.remove", "teamx.remove"}, description = "Removes an existing world from config")
+    @IXCommand(name = "xworld.remove", permission = "xworld.command.remove", usage = "/xworld remove [World]", aliases = {"xw.remove", "teamx.remove"}, description = "Removes an existing world from config", minArgs = 1, maxArgs = 2 )
     public void xWorldCommand( XCommand xCommand ) {
 
     }
