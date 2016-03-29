@@ -78,7 +78,11 @@ public class XCommand {
         String key = null;
         for (int i = 0; i < arguments.length; i++) {
             if (arguments[i].equalsIgnoreCase("-g")) {
-                key = arguments[i] + 1;
+                if( i < arguments.length -2) {
+                    key = arguments[i] + 1;
+                } else {
+                    key = null;
+                }
             }
         }
 
@@ -93,7 +97,11 @@ public class XCommand {
         String key = null;
         for (int i = 0; i < arguments.length; i++) {
             if (arguments[i].equalsIgnoreCase("-s")) {
-                key = arguments[i] + 1;
+                if( i < arguments.length -2) {
+                    key = arguments[i] + 1;
+                } else {
+                    key = null;
+                }
             }
         }
 
